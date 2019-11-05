@@ -1,28 +1,28 @@
 ﻿@model FiveGroup.ViewModel.SymptomDepartment
 
 @{
-    ViewBag.Title = "編輯症狀科別對應資料";
+    ViewBag.Title = "編輯症狀科別對應";
 }
 
-    <h2>編輯症狀科別對應資料</h2>
+<h2>編輯症狀科別對應</h2>
 
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
+    @*@Html.AntiForgeryToken()*@
+
     <div class="form-horizontal">
-        
+
         <hr />
         <div class="form-group">
             @Html.LabelFor(model => model.depSymRef.dep_sym_sn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control" readonly="readonly" type="number" value="@Model.depSymRef.dep_sym_sn" id="dep_sym_sn" name="dep_sym_sn"/>
+                <input class="form-control" readonly="readonly" type="number" value="@Model.depSymRef.dep_sym_sn" id="dep_sym_sn" name="dep_sym_sn" />
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">身體部位</label>
+            @Html.LabelFor(model => model.depSymRef.bodypart.part_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="part_id" name="part_id">
                     @foreach (var a in Model.bodypartList)
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">症狀</label>
+            @Html.LabelFor(model => model.depSymRef.symptom.sym_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="sym_id" name="sym_id">
                     @foreach (var a in Model.symptomList)
@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">科別</label>
+            @Html.LabelFor(model => model.depSymRef.department.dep_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="dep_id" name="dep_id">
                     @foreach (var a in Model.departmentList)
@@ -87,9 +87,5 @@
 }
 
 <div>
-    @Html.ActionLink("返回列表", "Index", new { @cityname= ViewBag.citynameID})
+    @Html.ActionLink("返回列表", "Index")
 </div>
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

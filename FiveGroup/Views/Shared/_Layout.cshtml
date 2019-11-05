@@ -28,7 +28,7 @@
                         @Html.ActionLink("醫院", "Index", "Hospitals", null, new { @class = "dropdown-item" })
                         @Html.ActionLink("醫師", "Index", "Doctor", null, new { @class = "dropdown-item" })
                         @Html.ActionLink("添加物", "Index", "Ingrediants", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("症狀科別", "Index", "SymptomDepartment", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("症狀科別對應", "Index", "SymptomDepartment", null, new { @class = "dropdown-item" })
                     </div>
                 </div>
             </div>
@@ -38,11 +38,12 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <h4>&copy; @DateTime.Now.Year - 版權所有  sky corporation </h4>
-        </footer>
     </div>
-    
+
+    <footer class="bg-dark footer-content">
+        <h6 class="text-center text-white mb-0">&copy; @DateTime.Now.Year - 版權所有  FiveGroup </h6>
+    </footer>
+
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/umd/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

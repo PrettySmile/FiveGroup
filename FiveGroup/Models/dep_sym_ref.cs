@@ -11,7 +11,11 @@ namespace FiveGroup.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetadataDepSymRef))]
+
     public partial class dep_sym_ref
     {
         public long dep_sym_sn { get; set; }
