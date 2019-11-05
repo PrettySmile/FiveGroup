@@ -11,7 +11,10 @@ namespace FiveGroup.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetadataBodyPart))]
     public partial class bodypart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

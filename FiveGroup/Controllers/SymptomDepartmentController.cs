@@ -17,42 +17,14 @@ namespace FiveGroup.Controllers
     {
         Project2Entities db = new Project2Entities();
 
-        // GET: SymptomDepartment
-        public ActionResult Index(int page=1)
-        {      
-            List<dep_sym_ref> dsRefLis = db.dep_sym_ref.ToList();
-            //回傳分頁過的list回前端---------------------------------------
-            int pageDataSize = 20;
-            int pageCurrent = page < 1 ? 1 : page;
-            IPagedList<dep_sym_ref> pagedlist = dsRefLis.ToPagedList(pageCurrent, pageDataSize);
-            SymptomDepartment sd = new SymptomDepartment()
-            {
-                bodypartList = db.bodypart.ToList(),
-                symptomList = db.symptom.ToList(),
-                departmentList = db.department.ToList(),
-                depSymRefPagedList = pagedlist
-            };
-            return View(sd);
-        }
-
-        [HttpPost]
-        public ActionResult Index(string pId, string sId, string dId, int page=1)
+        public ActionResult Index(int page=1, string pId="", string sId="", string dId="")
         {
             IQueryable<dep_sym_ref> dsRefLis;
             dsRefLis = from m in db.dep_sym_ref
                        select m;
-            if (pId != "")
-            {
-                dsRefLis = dsRefLis.Where(m => m.part_id == pId);
-            }
-            if (sId != "")
-            {
-                dsRefLis = dsRefLis.Where(m => m.sym_id == sId);
-            }
-            if (dId != "")
-            {
-                dsRefLis = dsRefLis.Where(m => m.dep_id == dId);
-            }
+            if (pId != "") dsRefLis = dsRefLis.Where(m => m.part_id == pId);
+            if (sId != "") dsRefLis = dsRefLis.Where(m => m.sym_id == sId);
+            if (dId != "") dsRefLis = dsRefLis.Where(m => m.dep_id == dId);
 
             //回傳分頁過的list回前端---------------------------------------
             int pageDataSize = 20;

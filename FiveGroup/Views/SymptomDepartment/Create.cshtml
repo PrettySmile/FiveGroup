@@ -5,18 +5,16 @@
 }
 
 
-<div class="shadow p-3 mb-5 bg-white rounded">
-    <h2>
-        <strong>新增症狀科別對應</strong>
-    </h2>
-</div>
+<h2>
+    新增症狀科別對應
+</h2>
 
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
-            <label class="control-label col-md-2">身體部位</label>
+            @Html.LabelFor(model => model.depSymRef.bodypart.part_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="part_id" name="part_id">
                     @foreach (var a in Model.bodypartList)
@@ -28,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">症狀</label>
+            @Html.LabelFor(model => model.depSymRef.symptom.sym_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="sym_id" name="sym_id">
                     @foreach (var a in Model.symptomList)
@@ -40,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">科別</label>
+            @Html.LabelFor(model => model.depSymRef.department.dep_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="dep_id" name="dep_id">
                     @foreach (var a in Model.departmentList)
@@ -60,9 +58,5 @@
 }
 
 <div>
-    @Html.ActionLink("返回列表", "Index", new { @cityname = ViewBag.citynameID })
+    @Html.ActionLink("返回列表", "Index")
 </div>
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

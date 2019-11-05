@@ -93,4 +93,28 @@ namespace FiveGroup.Models
         public bool doc_display { get; set; }
 
     }
+
+    public class MetadataDepSymRef
+    {
+        [DisplayName("流水號")]
+        public long dep_sym_sn { get; set; }
+    }
+
+    public class MetadataBodyPart
+    {
+        [DisplayName("身體部位")]
+        public string part_name { get; set; }
+    }
+
+    public class MetadataSymptom
+    {
+        [DisplayName("症狀")]
+        public string sym_name { get; set; }
+    }
+
+    public class MetadataDepartment
+    {
+        [DisplayName("科別")]
+        public string dep_name { get; set; }
+    }
 }

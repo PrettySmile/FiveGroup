@@ -10,11 +10,13 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 
 <div class="shadow p-3 mb-5 bg-white rounded">
-    <h2 class="text-center"><strong>該看哪科</strong></h2>
+    <h2 class="text-center">
+        <strong>症狀科別對應</strong>
+    </h2>
 </div>
 
 <div class="row">
-    <form class="form-row" method="post">
+    <form class="form-row" method="get">
         <div class="align-self-md-center mb-4 ml-2">
             <select id="pId" name="pId">
                 <option value="">全部</option>
@@ -66,33 +68,35 @@
         <div class="align-self-md-center mb-4 ml-2">
             <input type="submit" value="查詢" class="btn btn-primary" />
         </div>
+        <input id="page" type="hidden" name="page" value="1" />
     </form>
     <div class="col-md-auto ml-auto">
-        @Html.ActionLink("新增資料", "Create", new { }, new { @class = "btn btn-info" })
+        @Html.ActionLink("新增資料", "Create", null, new { @class = "btn btn-info" })
     </div>
 </div>
 
+
 <table class="table">
     <tr class="row text-center">
-        <th class="col-2">
-            流水號
+        <th class="col-1">
+            @Html.LabelFor(model => model.depSymRefPagedList[0].dep_sym_sn, htmlAttributes: new { @class = "control-label" })
         </th>
         <th class="col-3">
-            身體部位
+            @Html.LabelFor(model => model.depSymRefPagedList[0].bodypart.part_name, htmlAttributes: new { @class = "control-label" })
         </th>
         <th class="col-3">
-            症狀
+            @Html.LabelFor(model => model.depSymRefPagedList[0].symptom.sym_name, htmlAttributes: new { @class = "control-label" })
         </th>
         <th class="col-3">
-            科別
+            @Html.LabelFor(model => model.depSymRefPagedList[0].department.dep_name, htmlAttributes: new { @class = "control-label" })
         </th>
-        <th class="col-1"></th>
+        <th class="col-2"></th>
     </tr>
 
     @foreach (var item in Model.depSymRefPagedList)
     {
         <tr class="row text-center">
-            <td class="col-2">
+            <td class="col-1">
                 @Html.DisplayFor(modelItem => item.dep_sym_sn)
             </td>
             <td class="col-3">
@@ -104,14 +108,15 @@
             <td class="col-3">
                 @Html.DisplayFor(modelItem => item.department.dep_name)
             </td>
-            <td class="col-1">
-                @Html.ActionLink("編輯", "Edit", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class="btn btn-info" })
-                @Html.ActionLink("刪除", "Delete", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-danger" , onclick="return confirm('您確定要刪除嗎？')"})
+            <td class="col-2">
+                @Html.ActionLink("編輯", "Edit", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("刪除", "Delete", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-danger", onclick = "return confirm('您確定要刪除嗎？')" })
             </td>
         </tr>
     }
 
 </table>
+
 
 <div class="text-center">
     @Html.PagedListPager(Model.depSymRefPagedList, page => Url.Action("Index", new { page }))
