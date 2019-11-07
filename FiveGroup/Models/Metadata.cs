@@ -117,4 +117,26 @@ namespace FiveGroup.Models
         [DisplayName("科別")]
         public string dep_name { get; set; }
     }
+    public class MetaDatafeedback
+    {
+        [DisplayName("問題編號")]
+        public int f_sn { get; set; }
+
+        [DisplayName("問題類別")]
+        [Required(ErrorMessage = "請選擇類別!!")]
+        public string f_class { get; set; }
+
+        [DisplayName("內容")]
+        [Required(ErrorMessage = "請輸入內容!!")]
+        [StringLength(150, ErrorMessage = "內容不得超過150字")]
+        public string f_content { get; set; }
+
+        [DisplayName("回報時間")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public System.DateTime f_date { get; set; }
+
+        [DisplayName("標示為已讀")]
+        public bool f_checked { get; set; }
+    }
+
 }

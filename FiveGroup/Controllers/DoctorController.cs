@@ -18,18 +18,22 @@ namespace FiveGroup.Controllers
 
         public ActionResult Create()
         {
-            /*取資料筆數並呼叫New_Doc_id獲取新id，再透過ViewBag傳至前端*/
-            var id_count = db.doctor.Count();
-            string New_id;
-            New_id = New_Doc_id(id_count);
-            ViewBag.doc_id = New_id;
-           /************************************************************/
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(doctor doctor)
         {
+            /*將資料庫ID由大到小排序，取出第一筆資料，並呼叫方法取得新ID*/
+            var Doc_Desc = from m in db.doctor
+                           orderby m.doc_id descending
+                           select m.doc_id;
+
+            string Doc_First = Doc_Desc.FirstOrDefault(), New_id;
+            New_id = New_Doc_id(Doc_First);
+            /***********************************************************/
+            doctor.doc_id = New_id;
+
             db.doctor.Add(doctor);
             db.SaveChanges();
 
@@ -67,35 +71,43 @@ namespace FiveGroup.Controllers
 
         /*********************************************************/
         /******************此為測試New_Doc_id程式*****************/
-        //public void test_id()
+        //public void Test()
         //{
-        //    //var id_count = db.doctor.Count();
-        //    var id_count = 99;
-        //    String New_id;
-        //    New_id = New_Doc_id(id_count);
+        //    var Doc_Desc = from m in db.doctor
+        //                   orderby m.doc_id descending
+        //                   select m.doc_id;
+
+        //    string Doc_First = Doc_Desc.FirstOrDefault(), New_id;
+        //    New_id = New_Doc_id(Doc_First);
         //    Response.Write(New_id);
         //}
         /*********************************************************/
         /********************************************************/
 
-        public string New_Doc_id(int id)
+        public string New_Doc_id(string id)
         {
-            string Doc_id,id_str;
-            id++;
-            if (id < 10)
+            int num = 2, sum = 0;
+            string Doc_id;
+
+            /*迴圈功能為取出ID裡的數字 例.DR001=>取001可得整數1,DR101=>取101可得整數101,以此類推...*/
+            do
             {
-                id_str = Convert.ToString(id);/*將id轉換為字串*/
+                int i = int.Parse(id.Substring(num, 1));/*由第num個字串轉換成整數型態*/
+                num++;
+                sum = sum * 10;
+                sum += i;
+            } while (num < 5);
+
+            sum++;
+            string id_str = Convert.ToString(sum);/*將sum轉換為字串*/
+
+            if (sum < 10)
                 Doc_id = "DR00" + id_str;
-            }
-            else if (id >= 10 && id < 100)
-            {
-                id_str = Convert.ToString(id);
+            else if (sum >= 10 && sum < 100)
                 Doc_id = "DR0" + id_str;
-            }
-            else {
-                id_str = Convert.ToString(id);
+            else
                 Doc_id = "DR" + id_str;
-            }
+
             return Doc_id;
         }
 

@@ -11,7 +11,9 @@ namespace FiveGroup.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetaDatafeedback))]
     public partial class feedback
     {
         public int f_sn { get; set; }

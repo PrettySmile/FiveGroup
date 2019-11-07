@@ -1,0 +1,34 @@
+﻿@*@model Project.Models.feedback*@
+@model FiveGroup.ViewModel.FeedbackClass
+@{
+    ViewBag.Title = "Details";
+}
+
+    <link href="~/Content/Comprehensive.css" rel="stylesheet" />
+
+<div class="container mt-3">
+
+    @foreach (var item in Model.Feedbacks)
+    {
+    <div class="card">
+        <div class="card-header alert-secondary text-secondary">
+            <strong>@Html.DisplayFor(model => item.feedback_class.class_content)</strong>
+        </div>
+        <div class="card-body text-secondary">
+            @Html.DisplayFor(model => item.f_content)
+
+
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-light">回報時間: @Html.DisplayFor(model => item.f_date)</li>
+        </ul>
+        <div class="card-footer alert-secondary">
+            @Html.ActionLink("編輯", "Edit", new { id = item.f_sn, f_class = item.f_class }, new { @class = "btn btn-info" })
+        </div>
+    </div>
+       <hr>
+    }
+</div>
+<p> 
+    @Html.ActionLink("返回列表", "Index", new { f_class = ViewBag.f_class })
+</p>
