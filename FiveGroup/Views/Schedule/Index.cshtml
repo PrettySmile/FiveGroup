@@ -1,0 +1,82 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model FiveGroup.ViewModel.ScheduleView
+
+@{
+    ViewBag.Title = "時間表檢視";
+}
+
+<h2>時間表</h2>
+<p>
+    @Html.ActionLink("新增時間表", "Create")
+</p>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                序號
+            </th>
+            <th>
+                醫院
+            </th>
+            <th>
+                科別
+            </th>
+            <th>
+                醫師
+            </th>
+            <th>
+                起始時間
+            </th>
+            <th>
+                結束時間
+            </th>
+            <th>
+                是否顯示
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.schedulesList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hospital.hos_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.department.dep_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.doctor.doc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.starttime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.endtime)
+                </td>
+                <td>
+                    @if (item.s_display == false)
+                    {
+                        <span class="badge badge-secondary">隱藏</span>}
+                    else
+                    {
+                        <span class="badge badge-success">顯示</span>}
+                </td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", "Schedule", new { id = item.sn }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("刪除", "Delete", "Schedule", new { id = item.sn }, new { @class = "btn btn-danger", onclick = "return confirm('您確定要刪除嗎？')" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+	@Html.PagedListPager(Model.schedulesList, page => Url.Action("Index", new { page }))
+</div>
+
+
+

@@ -62,7 +62,7 @@ namespace FiveGroup.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int sn,string pId, string sId, string dId)
+        public ActionResult Edit(int? sn,string pId, string sId, string dId)
         {
             if (sn == null || pId==null || sId==null || dId==null)
             {

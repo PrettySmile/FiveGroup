@@ -3,45 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FiveGroup.Models;
 
 namespace FiveGroup.Controllers
 {
     public class HomeController : Controller
     {
-        //SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString);
-
-        // GET: Login
+        Project2Entities db = new Project2Entities();
         public ActionResult Index()
         {
             return View();
         }
-        //[HttpPost]
-        //public ActionResult Index(string id, string pwd)
-        //{
-        //    //string sql = "select * from tStudent where fEmail=@fEmail and fStuId=@fStuId";
-        //    string sql = "select * from tStudent where fEmail = @fEmail and fStuID = @fStuID";
-        //    SqlCommand cmd = new SqlCommand(sql, Conn);
-        //    cmd.Parameters.AddWithValue("@fEmail", id);
-        //    cmd.Parameters.AddWithValue("@fStuId", pwd);
-        //    SqlDataReader rd;//專門在讀資料的
-        //    Conn.Open();
-        //    rd = cmd.ExecuteReader();
-        //    if (rd.Read())
-        //    {//rd.Read()寫一次，指標就會移到下一筆，有讀到資料=true；沒讀到資料=false
-        //        Session["id"] = rd["fStuId"].ToString();//Session內的值，會到把瀏覽器關掉或登出網址為止，都不會消失
-        //        Conn.Close();
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    Conn.Close();
-        //    ViewBag.LoginErr = "帳號或密碼有誤!!";
-        //    return View();
-        //}
-
-        //public ActionResult Logout()
-        //{
-        //    Session.Clear();
-        //    return RedirectToAction("Index", "Home");
-        //}
+        [HttpPost]
+        public ActionResult Login(FormCollection post)
+        {
+            Session.Clear();
+            string account = post["id"];
+            string password = post["pwd"];
+            var admin = db.administrator.Where(d => d.admin_account == account && d.admin_pass == password).FirstOrDefault();
+            if (Session["account"] != null || admin != null)
+            {
+                if (admin != null)
+                {
+                    Session["account"] = account;
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.LoginErr = "帳號或密碼有誤!!";
+                return RedirectToAction("Index");
+            }
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

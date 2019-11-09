@@ -23,14 +23,15 @@
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         功能選單
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @Html.ActionLink("公告", "Index", "Announcement", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("醫院", "Index", "Hospitals", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("醫師", "Index", "Doctor", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("添加物", "Index", "Ingrediants", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("症狀科別對應", "Index", "SymptomDepartment", null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("問題回報", "Index", "Feedback", null, new { @class = "dropdown-item" })
-                    </div>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						@Html.ActionLink("公告", "Index", "Announcement", null, new { @class = "dropdown-item" })
+						@Html.ActionLink("時間表", "Index", "Schedule", null, new { @class = "dropdown-item" })
+						@Html.ActionLink("醫院", "Index", "Hospitals", null, new { @class = "dropdown-item" })
+						@Html.ActionLink("醫師", "Index", "Doctor", null, new { @class = "dropdown-item" })
+						@Html.ActionLink("添加物", "Index", "Ingrediants", null, new { @class = "dropdown-item" })
+						@Html.ActionLink("症狀科別對應", "Index", "SymptomDepartment", null, new { @class = "dropdown-item" })
+						@Html.ActionLink("問題回報", "Index", "Feedback", null, new { @class = "dropdown-item" })
+					</div>
                 </div>
             </div>
         </div>
