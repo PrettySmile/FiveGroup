@@ -17,6 +17,7 @@ namespace FiveGroup
             // 應用程式啟動時執行的程式碼
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
     }
