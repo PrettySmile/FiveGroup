@@ -4,35 +4,98 @@
     ViewBag.Title = "編輯公告";
 }
 
-<h1>編輯</h1>
+
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+
+<h1 class="text-lg-center tc tf"><strong>編輯公告</strong></h1>
+
+
 <form action="@Url.Action("Edit")" method="post">
     <input type="hidden" name="a_id" id="a_id" value="@Model.a_id" />
-    <div class="form-group">
-        <lable for="a_date">西元 日期 時間</lable>
-        <input type="text" name="a_date" id="a_date" class="form-control"
-               required value="@Model.a_date " />
+    @*<div class="form-group">
+            <lable for="a_date">西元 日期 時間</lable>
+            <input type="text" name="a_date" id="a_date" class="form-control"
+                   required value="@Model.a_date " />
+        </div>
+        <div class="form-group">
+            <lable for="a_content">內容</lable>
+            <input type="text" name="a_content" id="a_content" class="form-control"
+                   required value="@Model.a_content" />
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.a_display, "是否顯示", htmlAttributes: new { @class = "control-label" })
+
+            @Html.EditorFor(model => model.a_display)
+
+        </div>
+
+        <div class="form-group">
+
+            <input type="submit" value="儲存" class="btn btn-warning" />
+
+        </div>*@
+
+
+
+
+
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+            <hr />
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_date)*@西元 日期 時間</span>
+                </div>
+                <input name="a_date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value=@Model.a_date>
+            </div>
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_content)*@內容</span>
+                </div>
+                <input name="a_content" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value=@Model.a_content>
+            </div>
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_display)*@是否顯示</span>
+                </div>
+                <div class="justify-content-center">
+                    @Html.EditorFor(model => model.a_display)
+                </div>
+            </div>
+
+            @*<div class="input-group flex-wrap form-group">
+                <input class="form-check-input" type="checkbox" value="@Model.a_display" id="Checkbox1">
+                <div class="input-group-prepend tw" for="Checkbox1">
+                    是否顯示
+                </div>
+            </div>*@
+
+        @*<div class="input-group flex-wrap form-group">
+            <div class="input-group-prepend tw">
+                @Html.LabelFor(model => model.a_display, "是否顯示", htmlAttributes: new { @class = "control-label" })
+            </div>
+                @Html.EditorFor(model => model.a_display)
+
+            </div>*@
+
+
+            <br />
+
+            <div class=" justify-content-center col-12 row">
+                <p class="">
+                    <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </p>
+                <br />
+                <p class="">
+                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <lable for="a_content">內容</lable>
-        <input type="text" name="a_content" id="a_content" class="form-control"
-               required value="@Model.a_content" />
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.a_display, "是否顯示", htmlAttributes: new { @class = "control-label" })
-
-        @Html.EditorFor(model => model.a_display)
-
-    </div>
-
-    <div class="form-group">
-
-        <input type="submit" value="儲存" class="btn btn-warning" />
-
-    </div>
-
 </form>
-
-
-

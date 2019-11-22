@@ -4,55 +4,76 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+<h1 class="text-lg-center tc tf"><strong>添加物明細</strong></h1>
 
 <div>
-    <h4>ingrediant</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ing_name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ing_name)
-        </dd>
+    <div class="container justify-content-around col-12 row tf">
+        <div class="card col-3 bg-light" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title"><strong>@Html.DisplayNameFor(model => model.ing_name)</strong></h3>
+                <hr />
+                <h5 class="card-text text-center">@Html.DisplayFor(model => model.ing_name)</h5>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ing_eng_name)
-        </dt>
+        <div class="card col-3 bg-secondary" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title"><strong>@Html.DisplayNameFor(model => model.ing_eng_name)</strong></h3>
+                <hr />
+                <h5 class="card-text text-center">@Html.DisplayFor(model => model.ing_eng_name)</h5>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ing_eng_name)
-        </dd>
+        <div class="card col-3 bg-success" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title"><strong>@Html.DisplayNameFor(model => model.ing_category)</strong></h3>
+                <hr />
+                <h5 class="card-text text-center">@Html.DisplayFor(model => model.ing_category)</h5>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ing_category)
-        </dt>
+    <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.ing_category)
-        </dd>
+    <div class="container col-12 row justify-content-around tf">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ing_restricted)
-        </dt>
+        <div class="card col-5 bg-danger" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title"><strong>@Html.DisplayNameFor(model => model.ing_restricted)</strong></h3>
+                <hr />
+                <h5 class="card-text text-center">@Html.DisplayFor(model => model.ing_restricted)</h5>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ing_restricted)
-        </dd>
+        <div class="card col-5 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title"><strong>@Html.DisplayNameFor(model => model.ing_limitation)</strong></h3>
+                <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ing_limitation)
-        </dt>
+                <h5 class="card-text text-center">
+                    @Html.DisplayFor(model => model.ing_limitation)
+                </h5>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ing_limitation)
-        </dd>
+    </div>
 
-    </dl>
+    <br />
+
+    <div class=" justify-content-center col-12 row">
+        <p class="">
+
+            @Html.ActionLink("編輯", "Edit", new { id = Model.ing_id }, new { @class = "btn btn-success btn-lg tf", @style = "font-size:20px" })
+        </p>
+        <br />
+        <p class="">
+            @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+        </p>
+    </div>
+
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ing_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

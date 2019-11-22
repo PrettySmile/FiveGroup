@@ -5,15 +5,25 @@
     ViewBag.Title = "公告新增";
 }
 
-<h1>新增announcement</h1>
+<h1 class="text-lg-center tc tf"><strong>新增公告</strong></h1>
 <form action="@Url.Action("Create")" method="post">
+
+
     <div class="form-group">
         <lable for="a_id">公告編號</lable>
-        <input type="text" name="a_id" id="a_id" class="form-control"          required />
+        <input type="text" name="a_id" id="a_id" class="form-control" required />
     </div>
+
+    <div class="input-group flex-wrap form-group">
+        <div class="input-group-prepend tw">
+            <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_id)</span>
+        </div>
+        <input name="ing_id" class="form-control" id="ing_id" type="text" value="@ViewBag.Ing_id" readonly>
+    </div>
+
     <div class="form-group">
         <lable for="a_date">西元 日期 時間</lable>
-        <input type="text" name="a_date" id="a_date" class="form-control"      required />
+        <input type="text" name="a_date" id="a_date" class="form-control" required />
     </div>
     <div class="form-group">
         <lable for="a_content">內容</lable>

@@ -4,81 +4,78 @@
     ViewBag.Title = "Create";
 }
 
-<h2>新增添加物</h2>
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+<h1 class="text-lg-center tc tf"><strong>新增添加物</strong></h1>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @*<h4>ingrediant</h4>*@
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @*@Html.LabelFor(model => model.ing_id, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_id, new { htmlAttributes = new { @class = "form-control",@readonly="readonly"} })
-            @Html.ValidationMessageFor(model => model.ing_id, "", new { @class = "text-danger" })
-        </div>*@
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        
-        <div class="col-md-10">
-            <input name="ing_id" class="form-control" id="ing_id" type="text" value="@ViewBag.Ing_id" readonly>
-        </div>
-    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ing_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ing_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ing_name, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_id)</span>
+                </div>
+                <input name="ing_id" class="form-control" id="ing_id" type="text" value="@ViewBag.Ing_id" readonly>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ing_eng_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ing_eng_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ing_eng_name, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_name)</span>
+                </div>
+                <input name="ing_name" class="form-control" placeholder="EX: 三氧化二砷" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ing_category, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ing_category, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ing_category, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_eng_name)</span>
+                </div>
+                <input name="ing_eng_name" class="form-control" placeholder="EX: Arsenic trioxide" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ing_restricted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ing_restricted, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ing_restricted, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_category)</span>
+                </div>
+                <input name="ing_category" class="form-control" placeholder="EX: (十)常用做毒藥" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ing_limitation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ing_limitation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ing_limitation, "", new { @class = "text-danger" })
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_restricted)</span>
+                </div>
+                <textarea class="form-control" name="ing_restricted" aria-label="With textarea" placeholder="EX: 每劑容量為10毫克..."></textarea>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="新增" class="btn btn-primary" />
+            <br />
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>
+                </div>
+                <textarea class="form-control" name="ing_limitation" aria-label="With textarea" placeholder="EX: 用於治療一些對其他藥物治療無反應的白血病患者..."></textarea>
+            </div>
+
+            <br />
+
+            <div class=" justify-content-center col-12 row">
+                <div class="">
+                    <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </div>
+                <br />
+                <div class="">
+                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </div>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("返回列表", "Index")
-</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

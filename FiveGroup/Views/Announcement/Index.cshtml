@@ -3,44 +3,148 @@
 @{
     ViewBag.Title = "公告資訊";
 }
-    <div class="">
+
+
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+
+
+<h1 class="text-lg-center tc tf"><strong>公告列表</strong></h1>
+
+
+<p class="text-right col-12 tf">
+    @Html.ActionLink("新增公告", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
+</p>
+
+<div class="container col-12 tf">
+
+    <table id="tb1" class="table table-striped anotherhover border-light ">
+        <thead class="col-12">
+            <tr class=" text-center tc2 row ts1 bg1">
+                <th class="col-md-2">
+                    @*@Html.DisplayNameFor(model => model.a_id)*@公告編號
+                </th>
+
+
+                <th class="col-md-2">
+                    @*@Html.DisplayNameFor(model => model.a_date)*@發佈日期
+                </th>
+
+
+                <th class="col-md-3">
+                    @*@Html.DisplayNameFor(model => model.a_content)*@內容
+                </th>
+
+
+                <th class="col-md-2">
+                    @*@Html.DisplayNameFor(model => model.a_display)*@是否顯示
+                </th>
+
+
+                <th class="col-md-3">
+                    公 告 管 理
+                </th>
+            </tr>
+        </thead>
+        <tbody class="col-12">
+            @foreach (var item in Model)
+            {
+
+                <tr class="text-center tc row">
+                    <td class="col-md-2">
+                        @Html.DisplayFor(modelItem => item.a_id)
+                    </td>
+                    <td class="col-md-2">
+                        @Html.DisplayFor(modelItem => item.a_date)
+                    </td>
+                    <td class="col-md-3">
+                        @Html.DisplayFor(modelItem => item.a_content)
+                    </td>
+                    <td class="col-md-2 a">
+                        @Html.DisplayFor(modelItem => item.a_display)
+                    </td>
+
+                    <td class="col-md-3">
+
+                        <div class="dropdown text-center">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                功能選單
+                            </button>
+                            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                                <div>
+                                    <a href="@Url.Action("Edit")?a_id=@item.a_id"
+                                       class="btn btn-success">編輯</a>
+                                </div>
+                                <div>
+                                    <a href="@Url.Action("DELETE")?a_id=@item.a_id"
+                                       class="btn btn-danger"
+                                       onclick="return confirm('are you sure?  不後悔!!!!!');">刪除</a>
+                                </div>
+                                @*<div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", new { id = item.a_id }, new { @class = "btn btn-success glyphicon glyphicon-pencil", @style = "form-text" })</div>*@
+                                @*<div class="bg-dark text-center btn-lg">@Html.ActionLink("明細", "Details", new { id = item.ing_id }, new { @class = "btn btn-warning glyphicon glyphicon-pencil", @style = "form-text" })</div>*@
+                                @*<div class="bg-dark text-center btn-lg">@Html.ActionLink("刪除", "Delete", new { id = item.a_id }, new { @class = "btn btn-danger glyphicon glyphicon-pencil", @style = "form-text" })</div>*@
+                            </div>
+                        </div>
+
+
+
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="">
         <ul class="">
             <li>@Html.ActionLink("新增", "Create", "Announcement")</li>
         </ul>
     </div>
-<h1>   公告   </h1>
-<table class="table">
-    <tr>
-        <th>公告編號</th>
-        <th>發佈日期</th>
-        <th>內容</th>
-        <th>是否顯示</th>
-        <th>公 告 管 理</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <h1>   公告   </h1>
+    <table class="table">
         <tr>
-
-            <td>@item.a_id</td>
-            <td>@item.a_date</td>
-            <td>@item.a_content</td>
-            <td>@Html.DisplayFor(modelItem => item.a_display)</td>
-            <td>
-                <a href="@Url.Action("Edit")?a_id=@item.a_id"
-                   class="btn btn-success">編輯</a>
-                <a href="@Url.Action("DELETE")?a_id=@item.a_id"
-                   class="btn btn-danger"
-                   onclick="return confirm('are you sure?  不後悔!!!!!');">刪除</a>
-
-                @*<a href="@Url.Action("DETAIL")?a_id=@item.a_id"
-                   class="btn btn-info">詳細資料</a>*@
-
-
-
-            </td>
+            <th>公告編號</th>
+            <th>發佈日期</th>
+            <th>內容</th>
+            <th>是否顯示</th>
+            <th>公 告 管 理</th>
         </tr>
 
-    }
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.a_id</td>
+                <td>@item.a_date</td>
+                <td>@item.a_content</td>
+                <td>@Html.DisplayFor(modelItem => item.a_display)</td>
+                <td>
+                    <a href="@Url.Action("Edit")?a_id=@item.a_id"
+                       class="btn btn-success">編輯</a>
+                    <a href="@Url.Action("DELETE")?a_id=@item.a_id"
+                       class="btn btn-danger"
+                       onclick="return confirm('are you sure?  不後悔!!!!!');">刪除</a>
+
+                    @*<a href="@Url.Action("DETAIL")?a_id=@item.a_id"
+                        class="btn btn-info">詳細資料</a>*@
+
+
+
+@*</td>
+    </tr>*@
+
+@*}
+    </table>*@
 

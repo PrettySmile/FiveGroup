@@ -1,0 +1,65 @@
+﻿
+.tc {
+    color: antiquewhite;
+}
+
+.tc2 {
+    color: #a5a5a5
+}
+
+.anotherhover tbody tr:hover td {
+    background: hsla(306, 90%, 57%, 0.3);
+}
+
+.ts1 {
+    font-size: 24px;
+}
+
+.tf {
+    font-family: 'Microsoft JhengHei';
+}
+
+.a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    flex-direction: row;
+    width: 100px;
+    height: inherit;
+}
+
+/*#tb1 > thead > tr > th {
+        background:hsla(240, 92%, 46%, 0.3);
+    }*/
+
+.bg1 {
+    background: hsla(240, 92%, 46%, 0.3);
+}
+
+/*#tb1 > tbody > tr:nth-child(2n+1) {
+        background:hsla(240, 92%, 46%, 0.3);
+    }*/
+
+.tw {
+    width: 140px;
+}
+
+.d {
+    background-color: #00ffff;
+}
+
+.bg {
+    background-size: cover;
+    /*background-position: center;*/
+    background-image: url('../wallhaven-0wkj9x.jpg');
+}
+
+.ftc {
+    color: black;
+    box-shadow: 2px, 2px, 2px,inherit;
+}
+
+.tf {
+    font-family: 'Microsoft JhengHei';
+}

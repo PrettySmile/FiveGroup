@@ -121,6 +121,7 @@
     <Content Include="App_Data\Project2_log.ldf">
       <DependentUpon>Project2.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Assemblestyle sheet 01.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -183,6 +184,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="SQL\SQLLog.sql" />
+    <Content Include="wallhaven-0wkj9x.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

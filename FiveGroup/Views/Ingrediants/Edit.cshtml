@@ -4,78 +4,80 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>編輯添加物</h2>
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 
+
+<h1 class="text-lg-center tc tf"><strong>編輯添加物</strong></h1>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    @*<h4>ingrediant</h4>*@
-    <hr />
-    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ing_id)*@
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ing_id)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ing_id, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_id, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })
-            @Html.ValidationMessageFor(model => model.ing_id, "", new { @class = "text-danger" })
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" name="ing_id">@Html.DisplayNameFor(model => model.ing_id)</span>
+                </div>
+                @Html.EditorFor(model => model.ing_id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_name)</span>
+                </div>
+                <input name="ing_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value=@Model.ing_name>
+            </div>
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_eng_name)</span>
+                </div>
+                <input name="ing_eng_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value=@Model.ing_eng_name>
+            </div>
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.ing_category)</span>
+                </div>
+                <input name="ing_category" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value="@Model.ing_category">
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_restricted)</span>
+                </div>
+                <textarea class="form-control" name="ing_restricted" aria-label="With textarea">@Model.ing_restricted</textarea>
+            </div>
+
+            <br />
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>
+                </div>
+                <textarea class="form-control" name="ing_limitation" aria-label="With textarea">@Model.ing_limitation</textarea>
+            </div>
+
+            <br />
+
+            <div class=" justify-content-center col-12 row">
+                <p class="">
+                    <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </p>
+                <br />
+                <p class="">
+                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </p>
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ing_name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ing_name, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ing_eng_name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_eng_name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ing_eng_name, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ing_category, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_category, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ing_category, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ing_restricted, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_restricted, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ing_restricted, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ing_limitation, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ing_limitation, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ing_limitation, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="儲存" class="btn btn-primary" />
-        </div>
-    </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("返回前頁", "Index")
-</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
