@@ -1,15 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web;
 using System.Web.Mvc;
 using FiveGroup.Models;
+using System.Configuration;
 
 namespace FiveGroup.Controllers
 {
     public class HomeController : Controller
     {
         Project2Entities db = new Project2Entities();
+        SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        SqlCommand Cmd = new SqlCommand();
+        SqlDataAdapter adp = new SqlDataAdapter();
+        private void ExecuteSql(string sql)
+        {
+            Cmd.CommandText = sql;
+            Cmd.Connection = Conn;
+
+            Conn.Open();
+            Cmd.ExecuteNonQuery();
+            Conn.Close();
+        }
+        private DataTable QuerySql(string sql)
+        {
+
+            Cmd.CommandText = sql;
+            Cmd.Connection = Conn;
+            adp.SelectCommand = Cmd;
+            DataSet ds = new DataSet();
+            adp.Fill(ds);
+
+            return ds.Tables[0];
+        }
         public ActionResult Index()
         {
             return View();
@@ -20,21 +46,27 @@ namespace FiveGroup.Controllers
             Session.Clear();
             string account = post["id"];
             string password = post["pwd"];
-            var admin = db.administrator.Where(d => d.admin_account == account && d.admin_pass == password).FirstOrDefault();
-            if (Session["account"] != null || admin != null)
+            string sql = "select * from administrator where admin_account =@account  and admin_pass =@password";
+            Cmd.Parameters.AddWithValue("@account", account);
+            Cmd.Parameters.AddWithValue("@password", password);
+            Cmd.CommandText = sql;
+            Cmd.Connection = Conn;
+            SqlDataReader rd;
+            Conn.Open();
+
+            rd = Cmd.ExecuteReader();
+            if (rd.Read())
             {
-                if (admin != null)
-                {
-                    Session["account"] = account;
-                }
-                return RedirectToAction("Index");
+                Session["account"] = rd["admin_account"].ToString();
+
+                Conn.Close();
+                return RedirectToAction("Index", "Announcement");
             }
-            else
-            {
-                ViewBag.LoginErr = "帳號或密碼有誤!!";
-                return RedirectToAction("Index");
-            }
-        }
+            Conn.Close();
+            ViewBag.LoginErr = "帳號或密碼有誤!!";
+            return RedirectToAction("Index");
+            //var admin = db.administrator.Where(d => d.admin_account == account && d.admin_pass == password).FirstOrDefault();
+                    }
         public ActionResult Logout()
         {
             Session.Clear();
