@@ -4,15 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+
+<h1 class="text-lg-center tc tf"><strong>編輯時間列表</strong></h1>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
+<div class="container justify-content-center col-6">
     <div class="form-horizontal">
-        <h4>schedule</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.sn)
@@ -23,27 +27,62 @@
 
         @Html.HiddenFor(model => model.hos_id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.starttime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input id="starttime" name="starttime" @*type="datetime-local"*@ class="form-control" value="@Model.starttime">
-                @Html.ValidationMessageFor(model => model.starttime, "", new { @class = "text-danger" })
-                @*@Html.EditorFor(model => model.starttime, new { htmlAttributes = new { @class = "form-control"} })
+
+        <div class="input-group flex-wrap form-group">
+            <div class="input-group-prepend tw">
+                <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.starttime)*@開始時間</span>
+            </div>
+            @*<input id="starttime" name="starttime" class="form-control" value=@Model.starttime>*@
+            <input id="starttime" name="starttime" @*type="datetime-local"*@ class="form-control" value="@Model.starttime">
+            @Html.ValidationMessageFor(model => model.starttime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="input-group flex-wrap form-group">
+            <div class="input-group-prepend tw">
+                <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.endtime)*@結束時間</span>
+            </div>
+            @*<input id="endtime" name="endtime" class="form-control" value=@Model.endtime>*@
+            <input id="endtime" name="endtime" @*type="datetime-local"*@ class="form-control" value="@Model.endtime">
+            @Html.ValidationMessageFor(model => model.endtime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="input-group flex-wrap form-group">
+            <div class="input-group-prepend tw">
+                <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.s_display)*@是否顯示</span>
+            </div>
+            @*<input id="s_display" name="s_display" class="form-control" value=@Model.s_display>*@
+            @*<input id="s_display" name="s_display" @*type="datetime-local"*@ @*class="form-control" value="@Model.s_display">*@
+            @*@Html.ValidationMessageFor(model => model.s_display, "", new { @class = "text-danger" })*@
+            @Html.EditorFor(model => model.s_display)
+            @Html.ValidationMessageFor(model => model.s_display, "", new { @class = "text-danger" })
+        </div>
+
+
+
+
+
+
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.starttime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">*@
+        @*<input id="starttime" name="starttime" @*type="datetime-local"*@ @*class="form-control" value="@Model.starttime">
         @Html.ValidationMessageFor(model => model.starttime, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
+        @*@Html.EditorFor(model => model.starttime, new { htmlAttributes = new { @class = "form-control"} })
+        @Html.ValidationMessageFor(model => model.starttime, "", new { @class = "text-danger" })*@
+        @*</div>
+        </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.endtime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input id="endtime" name="endtime" @*type="datetime-local"*@ class="form-control" value="@Model.endtime">
-                @Html.ValidationMessageFor(model => model.endtime, "", new { @class = "text-danger" })
-                @*@Html.EditorFor(model => model.endtime, new { htmlAttributes = new { @class = "form-control" } })
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.endtime, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        @*<div class="col-md-10">
+        <input id="endtime" name="endtime" @*type="datetime-local"*@ @*class="form-control" value="@Model.endtime">
         @Html.ValidationMessageFor(model => model.endtime, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
+        @*@Html.EditorFor(model => model.endtime, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.endtime, "", new { @class = "text-danger" })*@
+        @*</div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.s_display, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -51,20 +90,35 @@
                     @Html.ValidationMessageFor(model => model.s_display, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
+        </div>*@
+
+        <div class=" justify-content-center col-12 row">
+            <p class="">
+                <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+            </p>
+            <br />
+            <p class="">
+                @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+            </p>
         </div>
+
+
+
+
     </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    @*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

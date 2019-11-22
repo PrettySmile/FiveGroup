@@ -71,13 +71,13 @@
                                 功能選單
                             </button>
                             <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-                                <div>
+                                <div class="bg-dark text-center btn-lg">
                                     <a href="@Url.Action("Edit")?a_id=@item.a_id"
-                                       class="btn btn-success">編輯</a>
+                                       class="btn btn-info glyphicon glyphicon-pencil">編輯</a>
                                 </div>
-                                <div>
+                                <div class="bg-dark text-center btn-lg">
                                     <a href="@Url.Action("DELETE")?a_id=@item.a_id"
-                                       class="btn btn-danger"
+                                       class="btn btn-danger glyphicon glyphicon-pencil"
                                        onclick="return confirm('are you sure?  不後悔!!!!!');">刪除</a>
                                 </div>
                                 @*<div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", new { id = item.a_id }, new { @class = "btn btn-success glyphicon glyphicon-pencil", @style = "form-text" })</div>*@
