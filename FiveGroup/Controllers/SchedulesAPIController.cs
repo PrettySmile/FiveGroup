@@ -54,25 +54,47 @@ namespace FiveGroup.Controllers
             return sc;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        
+        public DataTable Get(string doc_name, string dep_name, string hos_name, string date)
         {
-            return "value";
+            var sql = @"SELECT A.*,
+                   B.doc_name,C.dep_name,D.hos_name
+            FROM schedule AS A
+            LEFT JOIN doctor AS B ON B.doc_id=A.doc_id
+            LEFT JOIN department AS C ON C.dep_id=A.dep_id
+            LEFT JOIN hospital AS D ON D.hos_id=A.hos_id";
+            if (doc_name != null || dep_name != null || hos_name != null || date != null)
+            {
+                sql += " WHERE ";
+                if (doc_name != null)
+                {
+                    sql += "B.doc_name like '%" + doc_name + "%'";
+                }
+                if (dep_name != null)
+                {
+                    sql += "C.dep_name like '%" + dep_name + "%'";
+                }
+                if (hos_name != null)
+                {
+                    sql += "D.hos_name like '%" + hos_name + "%'";
+                }
+                if (date != null)
+                {
+                    sql += "A.starttime <= CONVERT(datetime,'" + date + "')" +
+                         "and A.endtime >= CONVERT(datetime,'" + date + "')";
+                }
+            }
+
+            DataTable sc = QuerySql(sql);
+            if (sc == null)
+            {
+                return null;
+            }
+            else
+            {
+                return sc;
+            }
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }
