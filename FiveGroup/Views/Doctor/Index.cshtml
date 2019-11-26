@@ -3,15 +3,102 @@
     ViewBag.Title = "Index";
 }
 
-    <div class="shadow p-3 mb-5 bg-white rounded">
-        <h2 class="text-center"><strong>醫師資訊</strong></h2>
-    </div>
-<p>
-    @Html.ActionLink("新增資料", "Create")
+
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>醫師列表</strong></h1>
+
+<p class="text-right col-12 tf">
+    @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
 </p>
-<table class="table">
+
+<div class="container col-12 tf">
+
+    <table id="tb1" class="table table-striped anotherhover border-light ">
+        <thead class="col-12">
+            <tr class=" text-center tc2 row ts1 bg1">
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.doc_id)
+                </th>
+
+
+                <th class="col-md-2">
+                    @Html.DisplayNameFor(model => model.doc_name)
+                </th>
+
+
+                <th class="col-md-5">
+                    @Html.DisplayNameFor(model => model.doc_history)
+                </th>
+
+
+                <th class="col-md-3">
+                    @Html.DisplayNameFor(model => model.doc_display)
+                </th>
+
+
+                <th class="col-md-1"></th>
+
+
+
+            </tr>
+        </thead>
+        <tbody class="col-12">
+            @foreach (var item in Model)
+            {
+
+                <tr class="text-center tc row">
+                    <td class="col-md-1">
+                        @Html.DisplayFor(modelItem => item.doc_id)
+                    </td>
+                    <td class="col-md-2">
+                        @Html.DisplayFor(modelItem => item.doc_name)
+                    </td>
+                    <td class="col-md-5">
+                        @Html.DisplayFor(modelItem => item.doc_history)
+                    </td>
+                    <td class="col-md-3">
+                        @if (item.doc_display == false)
+                        {
+                            <h4><span class="badge badge-secondary">隱藏</span></h4>
+                        }
+                        else
+                        {
+                            <h4><span class="badge badge-success">顯示</span></h4>
+                        }
+                    </td>
+                    <td class="col-md-1">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                功能選單
+                            </button>
+                            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", new { id = item.doc_id }, new { @class = "btn btn-info btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<table class="table">
     <thead>
-        <tr >
+        <tr>
             <th class="w-auto">
                 @Html.DisplayNameFor(model => model.doc_id)
             </th>
@@ -47,16 +134,19 @@
                 else
                 {
                     <span class="badge badge-success">顯示</span>}
-                @*@Html.DisplayFor(modelItem => item.doc_display)*@
+                @Html.DisplayFor(modelItem => item.doc_display)
             </td>
             <td>
                 @Html.ActionLink("編輯", "Edit", new { id = item.doc_id }, new { @class = "btn btn-info" })
-                @*@Html.ActionLink("Details", "Details", new { id=item.doc_id }) |*@
-                @*@Html.ActionLink(" ", "Delete", new { id = item.doc_id }, new { @class = "btn btn-danger glyphicon glyphicon-trash", onclick = "return confirm('您確定要刪除嗎??')" })*@
+                @Html.ActionLink("Details", "Details", new { id=item.doc_id }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.doc_id }, new { @class = "btn btn-danger glyphicon glyphicon-trash", onclick = "return confirm('您確定要刪除嗎??')" })
             </td>
         </tr>
     }
 
-</table>
+</table>*@
+
+
+
 
 

@@ -37,6 +37,10 @@
     background: hsla(240, 92%, 46%, 0.3);
 }
 
+.bg2 {
+    background: hsla(202, 82%, 42%, 0.3);
+}
+
 /*#tb1 > tbody > tr:nth-child(2n+1) {
         background:hsla(240, 92%, 46%, 0.3);
     }*/

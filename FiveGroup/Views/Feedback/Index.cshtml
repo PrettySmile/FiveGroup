@@ -3,17 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
 <!-----------Create應透過使用者新增資料(意見回饋),為了方便測試先擺這^^----------------->
-<!-->@Html.ActionLink("意見箱", "Create", new { }, new { @class = "btn btn-info" })<!-->
-<!------------------------------------------------------------------------------------->
+<p class="text-right col-12 tf">@Html.ActionLink("意見箱", "Create", new { }, new { @class = "btn btn-success", @style = "font-size:20px" })</p>
+<!-----------Understood, but I still decorate this button------------------------------>
 
 
-    <div class="shadow p-3 mb-5 bg-white rounded">
-        <h2 class="text-center"><strong>問題回報</strong></h2>
-        <p class="text-dark text-center">【@ViewBag.class_content】</p>
-    </div>
+<div class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf">
+    <h1 class="text-lg-center tc tf"><strong>問題回報</strong></h1>
+    <h5 class="text-lg-center tc tf">【@ViewBag.class_content】</h5>
+</div>
 
-    @*<div class="col-md-auto mt-5">
+@*<div class="col-md-auto mt-5">
         <h5 class="alert alert-secondary text-center">@ViewBag.class_content</h5>
     </div>*@
 
@@ -22,80 +25,101 @@
     <div class="card-header">
         <ul class="nav nav-tabs nav-fill" id="mytab">
             <li class="nav-item">
-                <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0001">
-                    資訊情報
-                    @if (ViewBag.f_c01 > 0)
-                    {
-                        <span class="badge badge-danger">@ViewBag.f_c01</span>
-                    }
-                </a>
+                <h3>
+                    <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0001">
+                        資訊情報
+                        @if (ViewBag.f_c01 > 0)
+                        {
+                            <span class="badge badge-danger">@ViewBag.f_c01</span>
+                        }
+                    </a>
+                </h3>
             </li>
             <li class="nav-item">
-                <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0002">
-                    系統功能
-                    @if (ViewBag.f_c02 > 0)
-                    {
-                        <span class="badge badge-danger">@ViewBag.f_c02</span>
-                    }
-                </a>
+                <h3>
+                    <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0002">
+                        系統功能
+                        @if (ViewBag.f_c02 > 0)
+                        {
+                            <span class="badge badge-danger">@ViewBag.f_c02</span>
+                        }
+                    </a>
+                </h3>
             </li>
             <li class="nav-item">
-                <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0003">
-                    介面設計
-                    @if (ViewBag.f_c03 > 0)
-                    {
-                        <span class="badge badge-danger">@ViewBag.f_c03</span>
-                    }
-                </a>
+                <h3>
+                    <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0003">
+                        介面設計
+                        @if (ViewBag.f_c03 > 0)
+                        {
+                            <span class="badge badge-danger ">@ViewBag.f_c03</span>
+                        }
+                    </a>
+                </h3>
             </li>
             <li class="nav-item">
-                <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0004">
-                    其他
-                    @if (ViewBag.f_c04 > 0)
-                    {
-                        <span class="badge badge-danger">@ViewBag.f_c04</span>
-                    }
-                </a>
+                <h3>
+                    <a class="nav-link alert-secondary text-secondary" href="/Feedback?f_class=F0004">
+                        其他
+                        @if (ViewBag.f_c04 > 0)
+                        {
+                            <span class="badge badge-danger">@ViewBag.f_c04</span>
+                        }
+                    </a>
+                 </h3>
             </li>
         </ul>
     </div>
 
 
     <div class="card-body">
-        <div class="row">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th class="w-auto text-center">時間</th>
-                        <th class="w-auto text-center">讀取狀態</th>
-                        <th class="w-auto"></th>
+        <div>
+            <table class="table table-hover container col-12">
+                <thead class="col-12">
+                    <tr class="row">
+                        <th class="col-4 text-center">時間</th>
+                        <th class="col-4 text-center">讀取狀態</th>
+                        <th class="col-4"></th>
                     </tr>
                 </thead>
 
+                <tbody class="col-12">
+                    @foreach (var item in Model.Feedbacks)
+                    {
+                        <tr class="text-center row">
+                            <td class="col-4">@Html.DisplayFor(model => item.f_date)</td>
+                            <td class="col-4">
+                                @if (@item.f_checked == false)
+                                {
+                                    <h4><span class="badge badge-danger">尚未讀取</span></h4>
+                                }
+                                else
+                                {
+                                    <h4><span class="badge badge-success">已讀取</span></h4>
+                                }
 
-                @foreach (var item in Model.Feedbacks)
-                {
-                    <tr class="text-center">
-                        <td>@Html.DisplayFor(model => item.f_date)</td>
-                        <td>
-                            @if (@item.f_checked == false)
-                            {
-                                <span class="badge badge-danger">尚未讀取</span>
-                            }
-                            else
-                            {
-                                <span class="badge badge-success">已讀取</span>
-                            }
+                            </td>
+                            <td class="col-4">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        功能選單
+                                    </button>
+                                    <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                                        <div class="bg-dark text-center btn-lg "> @Html.ActionLink("編輯", "Edit", new { id = item.f_sn, f_class = ViewBag.f_class }, new { @class = "btn btn-info btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                                        <div class="bg-dark text-center btn-lg"> @Html.ActionLink("明細", "Details", new { id = item.f_sn, f_class = ViewBag.f_class }, new { @class = "btn btn-warning btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                                        <div class="bg-dark text-center btn-lg"> @Html.ActionLink("刪除", "Delete", new { id = item.f_sn, f_class = ViewBag.f_class }, new { @class = "btn btn-danger btn-block glyphicon glyphicon-pencil", @style = "form-text", onclick = "return confirm('您確定要刪除嗎??')" })</div>
+                                    </div>
+                                </div>
 
-                        </td>
-                        <td>
-                            @Html.ActionLink("編輯", "Edit", new { id = item.f_sn, f_class = ViewBag.f_class }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("詳細資訊", "Details", new { id = item.f_sn, f_class = ViewBag.f_class }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("刪除", "Delete", new { id = item.f_sn, f_class = ViewBag.f_class }, new { @class = "btn btn-danger", onclick = "return confirm('您確定要刪除嗎??')" })
-                        </td>
-                    </tr>
-                }
 
+
+
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>

@@ -6,29 +6,42 @@
 
     <link href="~/Content/Comprehensive.css" rel="stylesheet" />
 
-<div class="container mt-3">
+    <div class="container mt-3">
 
-    @foreach (var item in Model.Feedbacks)
-    {
-    <div class="card">
-        <div class="card-header alert-secondary text-secondary">
-            <strong>@Html.DisplayFor(model => item.feedback_class.class_content)</strong>
-        </div>
-        <div class="card-body text-secondary">
-            @Html.DisplayFor(model => item.f_content)
+        @foreach (var item in Model.Feedbacks)
+        {
+            <div class="card">
+                <div class="card-header alert-secondary text-secondary">
+                    <strong>@Html.DisplayFor(model => item.feedback_class.class_content)</strong>
+                </div>
+                <div class="card-body text-secondary">
+                    @Html.DisplayFor(model => item.f_content)
 
 
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-light">回報時間: @Html.DisplayFor(model => item.f_date)</li>
-        </ul>
-        <div class="card-footer alert-secondary">
-            @Html.ActionLink("編輯", "Edit", new { id = item.f_sn, f_class = item.f_class }, new { @class = "btn btn-info" })
-        </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-light">回報時間: @Html.DisplayFor(model => item.f_date)</li>
+                </ul>
+                <div class="card-footer alert-secondary">
+
+                </div>
+
+
+
+
+            </div>
+            <hr>
+
+            <div class=" justify-content-center col-12 row">
+                <div class="">
+                    @*<input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />*@
+                    @Html.ActionLink("編輯", "Edit", new { id = item.f_sn, f_class = item.f_class }, new { @class = "btn btn-info btn-lg tf", @style = "font-size:20px" })
+                </div>
+                <br />
+                <div class="">
+                    @*@Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })*@
+                    @Html.ActionLink("返回列表", "Index", new { f_class = ViewBag.f_class }, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </div>
+            </div>
+        }
     </div>
-       <hr>
-    }
-</div>
-<p> 
-    @Html.ActionLink("返回列表", "Index", new { f_class = ViewBag.f_class })
-</p>

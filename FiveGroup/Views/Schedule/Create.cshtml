@@ -4,79 +4,112 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>新增時間列表</strong></h1>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>schedule</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @*<div class="form-group">
             @Html.LabelFor(model => model.doc_id, "doc_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               <input id="doc_id" name="doc_id" type="text" class="form-control"/>
+                <input id="doc_id" name="doc_id" type="text" class="form-control" />
                 @Html.ValidationMessageFor(model => model.doc_id, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.dep_id, "dep_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input id="dep_id" name="dep_id" type="text" class="form-control" />
-                @Html.ValidationMessageFor(model => model.dep_id, "", new { @class = "text-danger" })
+
+
+        <div class="input-group flex-wrap form-group">
+            <div class="input-group-prepend tw">
+                <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.doc_id)</span>    @*//You have to lose the Razor helper in order tp avoid conflict of ID generating*@
+            @*</div>
+            <input name="doc_id" class="form-control" id="doc_id" type="text" value="@ViewBag.Ing_id" readonly>
+        </div>*@
+
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.doc_id)*@醫師編號</span>
+                </div>
+                <input id="doc_id" name="doc_id" class="form-control" type="text" placeholder="輸入醫師編號">
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hos_id, "hos_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input id="hos_id" name="hos_id" type="text" class="form-control" />
-                @Html.ValidationMessageFor(model => model.hos_id, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.dep_id)*@科別編號</span>
+                </div>
+                <input id="dep_id" name="dep_id" class="form-control" type="text" placeholder="輸入科別編號">
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.starttime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input id="starttime" name="starttime" type="datetime-local" class = "form-control"  value="">
-                @Html.ValidationMessageFor(model => model.starttime, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.hos_id)*@醫院編號</span>
+                </div>
+                <input id="hos_id" name="hos_id" class="form-control" type="text" placeholder="輸入醫院編號">
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.endtime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input id="endtime" name="endtime" type="datetime-local" class="form-control" value="">
-                    @Html.ValidationMessageFor(model => model.endtime, "", new { @class = "text-danger" })
-</div>
-        </div>
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.starttime)*@開始時間</span>
+                </div>
+                <input id="starttime" name="starttime" class="form-control" type="datetime-local" placeholder="輸入開始時間">
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.s_display, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.s_display)
-                    @Html.ValidationMessageFor(model => model.s_display, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.endtime)*@結束時間</span>
+                </div>
+                <input id="endtime" name="endtime" class="form-control" type="datetime-local" placeholder="輸入結束時間">
+            </div>
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" for="s_display">@*@Html.DisplayNameFor(model => model.s_display)*@是否顯示</span>
+                </div>
+                <select class="custom-select" id="s_display" name="s_display">
+                    <option selected>請選擇</option>
+                    <option value="True">是</option>
+                    <option value="False">否</option>
+                </select>
+            </div>
+
+            <br />
+
+            <div class=" justify-content-center col-12 row">
+                <div class="">
+                    <input type="submit" value="新增" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </div>
+                <br />
+                <div class="">
+                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
+
+
+
+            @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
+        </div>*@
         </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+     </div>
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+ }
+
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

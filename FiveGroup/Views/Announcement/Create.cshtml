@@ -5,7 +5,7 @@
     ViewBag.Title = "公告新增";
 }
 
-<h1 class="text-lg-center tc tf"><strong>新增公告</strong></h1>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>新增公告</strong></h1>
 <form action="@Url.Action("Create")" method="post">
     <div class="container justify-content-center col-6">
         <div class="form-horizontal">
@@ -15,28 +15,32 @@
                 <div class="input-group-prepend tw">
                     <span class="input-group-text flex-fill justify-content-center">公告編號@*@Html.DisplayNameFor(model => model.a_id)*@</span>
                 </div>
-                <input id="a_id" name="a_id" class="form-control" type="text" @*value="@ViewBag.a_id"*@ placeholder="輸入編號" required />
+                <input id="a_id" name="a_id" class="form-control" type="text" @*value="@ViewBag.a_id"*@ placeholder="輸入編號"/>
             </div>
 
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
-                    <span class="input-group-text flex-fill justify-content-center">西元 日期 時間</span>
+                    <span class="input-group-text flex-fill justify-content-center">公告日期</span>
                 </div>
-                <input type="text" id="a_date" name="a_date" class="form-control" placeholder="輸入日期" required>
+                <input id="a_date" name="a_date" class="form-control" type="datetime-local" placeholder="輸入日期">
             </div>
 
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
                     <span class="input-group-text flex-fill justify-content-center">內容</span>
                 </div>
-                <input type="text" id="a_content" name="a_content" class="form-control" placeholder="輸入內容" required>
+                <input type="text" id="a_content" name="a_content" class="form-control" placeholder="輸入內容">
             </div>
 
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
-                    <span class="input-group-text flex-fill justify-content-center">是否顯示</span>
+                    <span class="input-group-text flex-fill justify-content-center" for="a_display">是否顯示</span>
                 </div>
-                <input type="text" id="a_display" name="a_display" class="form-control" placeholder="T / F" required>
+                <select class="custom-select" id="a_display" name="a_display">
+                    <option selected>請選擇</option>
+                    <option value="True">是</option>
+                    <option value="False">否</option>
+                </select>
             </div>
 
             <div class=" justify-content-center col-12 row">

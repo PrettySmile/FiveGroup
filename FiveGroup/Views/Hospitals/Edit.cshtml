@@ -4,90 +4,191 @@
     ViewBag.Title = "編輯醫院資料";
 }
 
-    <h2>編輯醫院資料</h2>
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>編輯醫院列表</strong></h1>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.hos_id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hos_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.hos_name, new { htmlAttributes = new { @class = "form-control" } })
+
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.hos_id)
+
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.hos_name)</span>
+                </div>
+                <input id="hos_name" name="hos_name" type="text" class="form-control" value="@Model.hos_name">
                 @Html.ValidationMessageFor(model => model.hos_name, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hos_eng_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.hos_eng_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.hos_eng_name, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.hos_eng_name)</span>
+                </div>
+                <input id="hos_eng_name" name="hos_eng_name" type="text" class="form-control" value="@Model.hos_eng_name">
+                @Html.ValidationMessageFor(model => model.hos_name, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hos_address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.hos_address, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.hos_address)</span>
+                </div>
+                <input id="hos_address" name="hos_address" type="text" class="form-control" value="@Model.hos_address">
                 @Html.ValidationMessageFor(model => model.hos_address, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hos_phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.hos_phone, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.hos_phone)</span>
+                </div>
+                <input id="hos_phone" name="hos_phone" type="text" class="form-control" value="@Model.hos_phone">
                 @Html.ValidationMessageFor(model => model.hos_phone, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hos_display, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.hos_display)
-                    @Html.ValidationMessageFor(model => model.hos_display, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" for="hos_display">@Html.DisplayNameFor(model => model.hos_display)</span>
                 </div>
+                <select class="custom-select" id="hos_display" name="hos_display">
+                    <option selected>請選擇</option>
+                    <option value="True">是</option>
+                    <option value="False">否</option>
+                </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.c_id, "城市", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.LabelFor(model => model.c_id, "城市")*@城市</span>
+                </div>
                 @Html.DropDownList("c_id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.c_id, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.d_id, "地區", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.LabelFor(model => model.d_id, "地區")*@地區</span>
+                </div>
                 @Html.DropDownList("d_id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.d_id, "", new { @class = "text-danger" })
             </div>
+
+
+            <input id="Hidden1" type="hidden" name="cityname" value="@ViewBag.citynameID" />
+
+
+            <div class=" justify-content-center col-12 row">
+                <p class="">
+                    <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </p>
+                <br />
+                <p class="">
+                    @Html.ActionLink("返回前頁", "Index", new { @cityname = ViewBag.citynameID }, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </p>
+            </div>
+
+
+
+
         </div>
+     </div>
+}
 
-        <input id="Hidden1" type="hidden" name="cityname" value="@ViewBag.citynameID" />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="儲存" class="btn btn-primary" />
+
+
+
+
+
+
+
+
+
+@*<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.hos_id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hos_name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.hos_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.hos_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hos_eng_name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.hos_eng_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.hos_eng_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hos_address, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.hos_address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.hos_address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hos_phone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.hos_phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.hos_phone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hos_display, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.hos_display)
+                @Html.ValidationMessageFor(model => model.hos_display, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.c_id, "城市", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("c_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.c_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.d_id, "地區", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("d_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.d_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="儲存" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
-    @Html.ActionLink("返回列表", "Index", new { @cityname= ViewBag.citynameID})
-</div>
+    @Html.ActionLink("返回列表", "Index", new { @cityname = ViewBag.citynameID })
+</div>*@
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

@@ -8,7 +8,7 @@
 <link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 
 
-<h1 class="text-lg-center tc tf"><strong>編輯公告</strong></h1>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>編輯公告</strong></h1>
 
 
 <form action="@Url.Action("Edit")" method="post">
@@ -48,41 +48,45 @@
 
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
-                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_date)*@西元 日期 時間</span>
+                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_date)*@公告日期</span>
                 </div>
-                <input name="a_date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value=@Model.a_date>
+                <input id="a_date" name="a_date" class="form-control" type="datetime-local" placeholder="輸入日期" value=@Model.a_date>
             </div>
 
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
                     <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_content)*@內容</span>
                 </div>
-                <input name="a_content" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value=@Model.a_content>
+                <input name="a_content" class="form-control" value=@Model.a_content>
             </div>
 
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
-                    <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.a_display)*@是否顯示</span>
+                    <span class="input-group-text flex-fill justify-content-center" for="a_display">@*@Html.DisplayNameFor(model => model.a_display)*@是否顯示</span>
                 </div>
-                <div class="justify-content-center">
-                    @Html.EditorFor(model => model.a_display)
-                </div>
+                <select class="custom-select" id="a_display" name="a_display">
+                    <option selected>請選擇</option>
+                    <option value="True">是</option>
+                    <option value="False">否</option>
+                </select>
             </div>
+
+
 
             @*<div class="input-group flex-wrap form-group">
-                <input class="form-check-input" type="checkbox" value="@Model.a_display" id="Checkbox1">
-                <div class="input-group-prepend tw" for="Checkbox1">
-                    是否顯示
-                </div>
-            </div>*@
-
-        @*<div class="input-group flex-wrap form-group">
-            <div class="input-group-prepend tw">
-                @Html.LabelFor(model => model.a_display, "是否顯示", htmlAttributes: new { @class = "control-label" })
+            <input class="form-check-input" type="checkbox" value="@Model.a_display" id="Checkbox1">
+            <div class="input-group-prepend tw" for="Checkbox1">
+                是否顯示
             </div>
-                @Html.EditorFor(model => model.a_display)
+        </div>*@
 
-            </div>*@
+            @*<div class="input-group flex-wrap form-group">
+        <div class="input-group-prepend tw">
+            @Html.LabelFor(model => model.a_display, "是否顯示", htmlAttributes: new { @class = "control-label" })
+        </div>
+            @Html.EditorFor(model => model.a_display)
+
+        </div>*@
 
 
             <br />

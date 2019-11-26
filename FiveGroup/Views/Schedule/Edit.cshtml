@@ -8,7 +8,7 @@
 <link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 
 
-<h1 class="text-lg-center tc tf"><strong>編輯時間列表</strong></h1>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>編輯時間列表</strong></h1>
 
 
 @using (Html.BeginForm())
@@ -48,17 +48,14 @@
 
         <div class="input-group flex-wrap form-group">
             <div class="input-group-prepend tw">
-                <span class="input-group-text flex-fill justify-content-center">@*@Html.DisplayNameFor(model => model.s_display)*@是否顯示</span>
+                <span class="input-group-text flex-fill justify-content-center" for="s_display">@*@Html.DisplayNameFor(model => model.s_display)*@是否顯示</span>
             </div>
-            @*<input id="s_display" name="s_display" class="form-control" value=@Model.s_display>*@
-            @*<input id="s_display" name="s_display" @*type="datetime-local"*@ @*class="form-control" value="@Model.s_display">*@
-            @*@Html.ValidationMessageFor(model => model.s_display, "", new { @class = "text-danger" })*@
-            @Html.EditorFor(model => model.s_display)
-            @Html.ValidationMessageFor(model => model.s_display, "", new { @class = "text-danger" })
+            <select class="custom-select" id="s_display" name="s_display">
+                <option selected>請選擇</option>
+                <option value="True">是</option>
+                <option value="False">否</option>
+            </select>
         </div>
-
-
-
 
 
 

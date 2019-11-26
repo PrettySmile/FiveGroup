@@ -4,12 +4,9 @@
     ViewBag.Title = "公告資訊";
 }
 
-
 <link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 
-
-
-<h1 class="text-lg-center tc tf"><strong>公告列表</strong></h1>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>公告列表</strong></h1>
 
 
 <p class="text-right col-12 tf">
@@ -61,7 +58,15 @@
                         @Html.DisplayFor(modelItem => item.a_content)
                     </td>
                     <td class="col-md-2 a">
-                        @Html.DisplayFor(modelItem => item.a_display)
+                        @*@Html.DisplayFor(modelItem => item.a_display)*@
+
+                        @if ( item.a_display == false)
+                        {
+                            <h4><span class="badge badge-secondary">隱藏</span></h4>}
+                        else
+                        {
+                            <h4><span class="badge badge-success">顯示</span></h4>}
+
                     </td>
 
                     <td class="col-md-3">
@@ -73,12 +78,12 @@
                             <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
                                 <div class="bg-dark text-center btn-lg">
                                     <a href="@Url.Action("Edit")?a_id=@item.a_id"
-                                       class="btn btn-info glyphicon glyphicon-pencil">編輯</a>
+                                       class="btn btn-info btn-block glyphicon glyphicon-pencil">編輯</a>
                                 </div>
                                 <div class="bg-dark text-center btn-lg">
                                     <a href="@Url.Action("DELETE")?a_id=@item.a_id"
-                                       class="btn btn-danger glyphicon glyphicon-pencil"
-                                       onclick="return confirm('are you sure?  不後悔!!!!!');">刪除</a>
+                                       class="btn btn-danger btn-block glyphicon glyphicon-pencil"
+                                       onclick="return confirm('確定刪除!?');">刪除</a>
                                 </div>
                                 @*<div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", new { id = item.a_id }, new { @class = "btn btn-success glyphicon glyphicon-pencil", @style = "form-text" })</div>*@
                                 @*<div class="bg-dark text-center btn-lg">@Html.ActionLink("明細", "Details", new { id = item.ing_id }, new { @class = "btn btn-warning glyphicon glyphicon-pencil", @style = "form-text" })</div>*@

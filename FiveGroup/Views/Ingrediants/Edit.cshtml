@@ -7,7 +7,7 @@
 <link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 
 
-<h1 class="text-lg-center tc tf"><strong>編輯添加物</strong></h1>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>編輯添加物</strong></h1>
 
 @using (Html.BeginForm())
 {
@@ -59,9 +59,17 @@
 
             <div class="input-group">
                 <div class="input-group-prepend">
+
+                    @*@if (modelItem => item.ing_limitation == null)
+                        {
+                            <span class="input-group-text tw justify-content-center">No Data</span>}
+                        else
+                        {
+                            <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>}*@
+
                     <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>
                 </div>
-                <textarea class="form-control" name="ing_limitation" aria-label="With textarea">@Model.ing_limitation</textarea>
+                <textarea class="form-control" name="ing_limitation" id="tx1" aria-label="With textarea">@Model.ing_limitation</textarea>
             </div>
 
             <br />
@@ -79,6 +87,21 @@
     </div>
 }
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+    //var value= $('#tx1').val()
+
+    //if (value = null) {
+    //    //$("tx1").add("No data");
+    //    alert("No data");
+    //}
+
+
+
+</script>

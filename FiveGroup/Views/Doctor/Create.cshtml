@@ -5,53 +5,61 @@
 
 }
 
-<link href="~/Content/Comprehensive.css" rel="stylesheet" />
-<h2>新增醫師</h2>
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
+
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>新增醫師</strong></h1>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-horizontal">
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(model => model.doc_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.doc_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.doc_name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.doc_history, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.doc_history, new { htmlAttributes = new { @class = "form-control textarea" } })
-                @*@Html.EditorFor(model => model.doc_history, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.ValidationMessageFor(model => model.doc_history, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.doc_display, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.doc_display)
-                    @Html.ValidationMessageFor(model => model.doc_display, "", new { @class = "text-danger" })
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.doc_name)</span>
                 </div>
+                <input name="doc_name" class="form-control" placeholder="醫師名稱">
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="儲存" class="btn btn-primary" />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.doc_history)</span>
+                </div>
+                <textarea class="form-control" name="doc_history" aria-label="With textarea" placeholder="醫師經歷"></textarea>
+            </div>
+
+            <br />
+
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" for="hos_display">@Html.DisplayNameFor(model => model.doc_display)</span>
+                </div>
+                <select class="custom-select" id="doc_display" name="doc_display">
+                    <option selected>請選擇</option>
+                    <option value="True">是</option>
+                    <option value="False">否</option>
+                </select>
+            </div>
+
+            <br />
+
+            <div class=" justify-content-center col-12 row">
+                <div class="">
+                    <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </div>
+                <br />
+                <div class="">
+                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("返回列表", "Index")
-</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

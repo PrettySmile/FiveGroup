@@ -9,7 +9,7 @@
 
 
 
-<h1 class="text-lg-center tc tf"><strong>添加物列表</strong></h1>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>添加物列表</strong></h1>
 
 
 <p class="text-right col-12 tf">
@@ -87,9 +87,9 @@
                                 功能選單
                             </button>
                             <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", new { id = item.ing_id }, new { @class = "btn btn-info glyphicon glyphicon-pencil", @style = "form-text" })</div>   @*btn-block*@
-                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("明細", "Details", new { id = item.ing_id }, new { @class = "btn btn-warning glyphicon glyphicon-pencil", @style = "form-text" })</div>
-                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("刪除", "Delete", new { id = item.ing_id }, new { @class = "btn btn-danger glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", new { id = item.ing_id }, new { @class = "btn btn-info btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("明細", "Details", new { id = item.ing_id }, new { @class = "btn btn-warning btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("刪除", "Delete", new { id = item.ing_id }, new { @class = "btn btn-danger btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
                             </div>
                         </div>
 
