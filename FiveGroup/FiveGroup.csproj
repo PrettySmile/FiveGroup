@@ -200,6 +200,7 @@
     <Compile Include="Controllers\IngrediantsController.cs" />
     <Compile Include="Controllers\SchedulesAPIController.cs" />
     <Compile Include="Controllers\SchedulesController.cs" />
+    <Compile Include="Controllers\SymptomDepartmentAPIController.cs" />
     <Compile Include="Controllers\SymptomDepartmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

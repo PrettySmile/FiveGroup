@@ -59,20 +59,26 @@ namespace FiveGroup.Controllers
                 sql += " WHERE ";
                 if (doc_name != null)
                 {
-                    sql += "B.doc_name like '%" + doc_name + "%'";
+                    sql += " B.doc_name like '%" + doc_name + "%'";
+                    if (dep_name != null || hos_name != null || date != null)
+                        sql += " and ";
                 }
                 if (dep_name != null)
                 {
-                    sql += "C.dep_name like '%" + dep_name + "%'";
+                    sql += " C.dep_name like '%" + dep_name + "%'";
+                    if (hos_name != null || date != null)
+                        sql += " and ";
                 }
                 if (hos_name != null)
                 {
-                    sql += "D.hos_name like '%" + hos_name + "%'";
+                    sql += " D.hos_name like '%" + hos_name + "%'";
+                    if (date != null)
+                        sql += " and ";
                 }
                 if (date != null)
                 {
-                    sql += "A.starttime <= CONVERT(datetime,'" + date + "')" +
-                         "and A.endtime >= CONVERT(datetime,'" + date + "')";
+                    sql += " A.starttime <= CONVERT(datetime,'" + date + "')" +
+                         " and A.endtime >= CONVERT(datetime,'" + date + "')";
                 }
             }
 
