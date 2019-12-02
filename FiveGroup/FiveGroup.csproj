@@ -129,6 +129,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Comprehensive.css" />
+    <Content Include="Content\fb_css.css" />
     <Content Include="Content\HospitalStyle.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\SymptomDepartment.css" />
@@ -310,13 +311,15 @@
     <Content Include="Views\SymptomDepartment\Index.cshtml" />
     <Content Include="Views\SymptomDepartment\Edit.cshtml" />
     <Content Include="Views\SymptomDepartment\Create.cshtml" />
-    <Content Include="Views\Feedback\Create.cshtml" />
+    <Content Include="Views\Feedback\OLDCreate.cshtml" />
     <Content Include="Views\Feedback\Details.cshtml" />
     <Content Include="Views\Feedback\Edit.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Schedule\Create.cshtml" />
     <Content Include="Views\Schedule\Edit.cshtml" />
     <Content Include="Views\Schedule\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_fb.cshtml" />
+    <Content Include="Views\Feedback\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
