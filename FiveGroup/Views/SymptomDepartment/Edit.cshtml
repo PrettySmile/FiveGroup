@@ -4,88 +4,75 @@
     ViewBag.Title = "編輯症狀科別對應";
 }
 
-<h2>編輯症狀科別對應</h2>
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>編輯症狀科別對應</strong></h1>
 
 @using (Html.BeginForm())
 {
     @*@Html.AntiForgeryToken()*@
 
-    <div class="form-horizontal">
+    <div class="container justify-content-center col-6">
+        <div class="form-horizontal">
+            <hr />
 
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(model => model.depSymRef.dep_sym_sn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input class="form-control" readonly="readonly" type="number" value="@Model.depSymRef.dep_sym_sn" id="dep_sym_sn" name="dep_sym_sn" />
+            <div class="input-group flex-wrap form-group hidden">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" name="ing_id">@Html.DisplayNameFor(model => model.depSymRef.dep_sym_sn)</span>
+                </div>
+                @Html.EditorFor(model => model.depSymRef.dep_sym_sn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.depSymRef.bodypart.part_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select id="part_id" name="part_id">
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" for="part_id">@Html.DisplayNameFor(model => model.depSymRef.bodypart.part_name)</span>
+                </div>
+                <select class="custom-select" id="part_id" name="part_id">
                     @foreach (var a in Model.bodypartList)
                     {
-                        if (@Model.depSymRef.part_id == @a.part_id)
-                        {
-                            <option value="@a.part_id" selected>@a.part_name</option>
-                        }
-                        else
-                        {
-                            <option value="@a.part_id">@a.part_name</option>
-                        }
+                        <option value="@a.part_id">@a.part_name</option>
                     }
                 </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.depSymRef.symptom.sym_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select id="sym_id" name="sym_id">
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" for="sym_id">@Html.DisplayNameFor(model => model.depSymRef.symptom.sym_name)</span>
+                </div>
+                <select class="custom-select" id="sym_id" name="sym_id">
                     @foreach (var a in Model.symptomList)
                     {
-                        if (@Model.depSymRef.sym_id == @a.sym_id)
-                        {
-                            <option value="@a.sym_id" selected>@a.sym_name</option>
-                        }
-                        else
-                        {
-                            <option value="@a.sym_id">@a.sym_name</option>
-                        }
+                        <option value="@a.sym_id">@a.sym_name</option>
                     }
                 </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.depSymRef.department.dep_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select id="dep_id" name="dep_id">
+            <div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center" for="dep_id">@Html.DisplayNameFor(model => model.depSymRef.department.dep_name)</span>
+                </div>
+                <select class="custom-select" id="dep_id" name="dep_id">
                     @foreach (var a in Model.departmentList)
                     {
-                        if (@Model.depSymRef.dep_id == @a.dep_id)
-                        {
-                            <option value="@a.dep_id" selected>@a.dep_name</option>
-                        }
-                        else
-                        {
-                            <option value="@a.dep_id">@a.dep_name</option>
-                        }
+                        <option value="@a.dep_id">@a.dep_name</option>
                     }
                 </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="儲存" class="btn btn-primary" />
+
+            <br />
+
+            <div class=" justify-content-center col-12 row">
+                <div class="">
+                    <input type="submit" value="儲存" class="btn btn-success btn-lg tf" style="font-size:20px" />
+                </div>
+                <br />
+                <div class="">
+                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                </div>
             </div>
+
+
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("返回列表", "Index")
-</div>

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FiveGroup.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace FiveGroup.Controllers
 {
@@ -11,9 +13,12 @@ namespace FiveGroup.Controllers
     {
         Project2Entities db = new Project2Entities();
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(string search, int? page)
         {
-            return View(db.doctor.ToList());
+            List<doctor> listmap = db.doctor.ToList();
+
+            return View(db.doctor.Where(m => m.doc_name.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 10));
+
         }
 
         public ActionResult Create()

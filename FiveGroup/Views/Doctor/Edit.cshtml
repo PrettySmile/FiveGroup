@@ -71,7 +71,7 @@
                 </div>
                 <br />
                 <div class="">
-                    @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+                    @Html.ActionLink("返回前頁", "Index", new { Page = Request.QueryString["page"] }, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
                 </div>
             </div>
         </div>

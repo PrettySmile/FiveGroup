@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FiveGroup.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace FiveGroup.Controllers
 {
@@ -15,9 +17,11 @@ namespace FiveGroup.Controllers
         private Project2Entities db = new Project2Entities();
 
         // GET: ingrediants
-        public ActionResult Index()
+        public ActionResult Index(string search, int? page)
         {
-            return View(db.ingrediant.ToList());
+            List<ingrediant> listmap = db.ingrediant.ToList();
+
+            return View(db.ingrediant.Where(m => m.ing_category.StartsWith(search) || search ==null).ToList().ToPagedList(page ?? 1,10));
         }
 
         // GET: ingrediants/Details/5

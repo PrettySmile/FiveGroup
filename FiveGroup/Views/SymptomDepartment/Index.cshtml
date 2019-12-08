@@ -6,25 +6,27 @@
     ViewBag.Title = "症狀科別對應";
 }
 
-<link href="~/Content/SymptomDepartment.css" rel="stylesheet" />
+<link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 
-<div class="shadow p-3 mb-5 bg-white rounded">
-    <h2 class="text-center">
-        <strong>症狀科別對應</strong>
-    </h2>
-</div>
 
-<div class="row">
-    <form class="form-row" method="get">
-        <div class="align-self-md-center mb-4 ml-2">
-            <select id="pId" name="pId">
-                <option value="">全部</option>
+<h1 class="shadow p-3 col-4 offset-4 rounded text-lg-center tc tf"><strong>症狀科別對應列表</strong></h1>
+<br />
+
+<div class="row container col-12">
+
+    <form class="form-row col-12" method="get">
+        <div class="input-group flex-wrap form-group col-7">
+            <div class="input-group-prepend" style="font-size:20px">
+                <span class="input-group-text flex-fill justify-content-center" for="pId">部位</span>
+            </div>
+            <select class="custom-select" id="pId" name="pId" style="font-size:20px">
+                <option value="" selected>全選</option>
                 @foreach (var a in Model.bodypartList)
                 {
                     if (@ViewBag.pId == @a.part_id)
                     {
-                        <option value="@a.part_id" selected>@a.part_name</option>
+                        <option value="@a.part_id">@a.part_name</option>
                     }
                     else
                     {
@@ -32,10 +34,15 @@
                     }
                 }
             </select>
-        </div>
-        <div class="align-self-md-center mb-4 ml-2">
-            <select id="sId" name="sId">
-                <option value="">全部</option>
+
+
+            <div  style="padding-right:10px"></div>
+
+            <div class="input-group-prepend" style="font-size:20px">
+                <span class="input-group-text flex-fill justify-content-center" for="sId">症狀</span>
+            </div>
+            <select class="custom-select" id="sId" name="sId" style="font-size:20px">
+                <option value="" selected>全選</option>
                 @foreach (var a in Model.symptomList)
                 {
                     if (@ViewBag.sId == @a.sym_id)
@@ -48,10 +55,15 @@
                     }
                 }
             </select>
-        </div>
-        <div class="align-self-md-center mb-4 ml-2">
-            <select id="dId" name="dId">
-                <option value="">全部</option>
+
+
+            <div style="padding-right:10px"></div>
+
+            <div class="input-group-prepend" style="font-size:20px">
+                <span class="input-group-text flex-fill justify-content-center" for="dId">科別</span>
+            </div>
+            <select class="custom-select" id="dId" name="dId" style="font-size:20px">
+                <option value="" selected>全選</option>
                 @foreach (var a in Model.departmentList)
                 {
                     if (@ViewBag.dId == @a.dep_id)
@@ -65,64 +77,102 @@
                 }
             </select>
         </div>
-        <div class="align-self-md-center mb-4 ml-2">
-            <input type="submit" value="查詢" class="btn btn-primary" />
+
+
+        <div class="input-group flex-wrap form-group col-1">
+
+            <input type="submit" value="查詢" class="btn btn-primary " style="font-size:20px" />
+
+            <input id="page" type="hidden" name="page" value="1" />
+
         </div>
-        <input id="page" type="hidden" name="page" value="1" />
+
+
+        <div class="input-group flex-wrap form-group col-1 offset-3">
+
+            @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
+
+        </div>
+
     </form>
-    <div class="col-md-auto ml-auto">
-        @Html.ActionLink("新增資料", "Create", null, new { @class = "btn btn-info" })
-    </div>
+    @*<p class=" text-right col-12">
+        
+    </p>*@
+
+    @*<div class="col-md-auto ml-auto">
+            @Html.ActionLink("新增資料", "Create", null, new { @class = "btn btn-info" })
+        </div>*@
+
+    @*<p class="text-right col-12 tf">
+            @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
+        </p>*@
+
 </div>
 
+<div class="container col-12 tf">
+    <table class="table table-striped anotherhover border-light">
+        <thead class="col-12">
+            <tr class="row text-center tc2 ts1 bg1">
+                <th class="col-1">
+                    @Html.LabelFor(model => model.depSymRefPagedList[0].dep_sym_sn, htmlAttributes: new { @class = "control-label" })
+                </th>
+                <th class="col-3">
+                    @Html.LabelFor(model => model.depSymRefPagedList[0].bodypart.part_name, htmlAttributes: new { @class = "control-label" })
+                </th>
+                <th class="col-3">
+                    @Html.LabelFor(model => model.depSymRefPagedList[0].symptom.sym_name, htmlAttributes: new { @class = "control-label" })
+                </th>
+                <th class="col-3">
+                    @Html.LabelFor(model => model.depSymRefPagedList[0].department.dep_name, htmlAttributes: new { @class = "control-label" })
+                </th>
+                <th class="col-2"></th>
+            </tr>
+        </thead>
 
-<table class="table">
-    <tr class="row text-center">
-        <th class="col-1">
-            @Html.LabelFor(model => model.depSymRefPagedList[0].dep_sym_sn, htmlAttributes: new { @class = "control-label" })
-        </th>
-        <th class="col-3">
-            @Html.LabelFor(model => model.depSymRefPagedList[0].bodypart.part_name, htmlAttributes: new { @class = "control-label" })
-        </th>
-        <th class="col-3">
-            @Html.LabelFor(model => model.depSymRefPagedList[0].symptom.sym_name, htmlAttributes: new { @class = "control-label" })
-        </th>
-        <th class="col-3">
-            @Html.LabelFor(model => model.depSymRefPagedList[0].department.dep_name, htmlAttributes: new { @class = "control-label" })
-        </th>
-        <th class="col-2"></th>
-    </tr>
+        <tbody class="col-12">
+            @foreach (var item in Model.depSymRefPagedList)
+            {
+                <tr class="row text-center tc">
+                    <td class="col-1">
+                        @Html.DisplayFor(modelItem => item.dep_sym_sn)
+                    </td>
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.bodypart.part_name)
+                    </td>
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.symptom.sym_name)
+                    </td>
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.department.dep_name)
+                    </td>
+                    <td class="col-2">
 
-    @foreach (var item in Model.depSymRefPagedList)
-    {
-        <tr class="row text-center">
-            <td class="col-1">
-                @Html.DisplayFor(modelItem => item.dep_sym_sn)
-            </td>
-            <td class="col-3">
-                @Html.DisplayFor(modelItem => item.bodypart.part_name)
-            </td>
-            <td class="col-3">
-                @Html.DisplayFor(modelItem => item.symptom.sym_name)
-            </td>
-            <td class="col-3">
-                @Html.DisplayFor(modelItem => item.department.dep_name)
-            </td>
-            <td class="col-2">
-                @Html.ActionLink("編輯", "Edit", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-info" })
-                @Html.ActionLink("刪除", "Delete", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-danger", onclick = "return confirm('您確定要刪除嗎？')" })
-            </td>
-        </tr>
-    }
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                功能選單
+                            </button>
+                            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("編輯", "Edit", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-info btn-block glyphicon glyphicon-pencil", @style = "form-text" })</div>
+                                <div class="bg-dark text-center btn-lg">@Html.ActionLink("刪除", "Delete", "SymptomDepartment", new { sn = item.dep_sym_sn, pId = item.part_id, sId = item.sym_id, dId = item.dep_id }, new { @class = "btn btn-danger btn-block glyphicon glyphicon-pencil", @style = "form-text", onclick = "return confirm('您確定要刪除嗎？')" })</div>
+                            </div>
+                        </div>
 
-</table>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-
+</div>
 <div class="text-center">
-    @Html.PagedListPager(Model.depSymRefPagedList, page => Url.Action("Index", new { page }))
+
+    @Html.PagedListPager(Model.depSymRefPagedList, page => Url.Action("Index", new { page }),
+        new PagedListRenderOptions
+        {
+            PageCountAndCurrentLocationFormat = "第{0}/共{1}頁",
+            DisplayPageCountAndCurrentLocation = true
+        })
 </div>
-
-
 
 
 

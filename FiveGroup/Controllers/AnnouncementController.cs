@@ -25,6 +25,12 @@ namespace FiveGroup.Controllers
         
         public ActionResult Create()
         {
+            var a = db.announcement.Count();
+            string id;
+            id = New_Ano_id(a);
+            ViewBag.Ano_id = id;
+
+
             return View();
         }
         [HttpPost]
@@ -77,6 +83,29 @@ namespace FiveGroup.Controllers
         }
 
 
+
+
+        public string New_Ano_id(int id)
+        {
+            string Ano_id, h;
+            id++;
+            if (id < 10)
+            {
+                h = Convert.ToString(id);/*將id轉換為字串*/
+                Ano_id = "A000" + id;
+            }
+            else if (id >= 10 && id < 100)
+            {
+                h = Convert.ToString(id);
+                Ano_id = "A00" + id;
+            }
+            else
+            {
+                h = Convert.ToString(id);
+                Ano_id = "A0" + id;
+            }
+            return Ano_id;
+        }
     }
      
 }
