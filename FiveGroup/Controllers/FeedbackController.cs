@@ -62,7 +62,8 @@ namespace FiveGroup.Controllers
 
             db.feedback.Add(feedback);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            return Content("<script>alert('感謝您的回報~!!');</script>");
         }
 
         public ActionResult Edit(int? id)
@@ -118,6 +119,8 @@ namespace FiveGroup.Controllers
 
             return RedirectToAction("Index", new { f_class = f_class });
         }
+
+ 
 
         public int fb_count(string f_class) {
 
