@@ -242,6 +242,7 @@
     <Compile Include="Models\ingrediant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginRule.cs" />
     <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>

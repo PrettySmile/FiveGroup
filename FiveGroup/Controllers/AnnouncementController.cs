@@ -8,6 +8,7 @@ using FiveGroup.Models;
 
 namespace FiveGroup.Controllers
 {
+    [LoginRule]
     public class AnnouncementController : Controller
     {
         Project2Entities db = new Project2Entities();
