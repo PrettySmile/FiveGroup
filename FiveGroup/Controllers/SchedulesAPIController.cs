@@ -49,7 +49,30 @@ namespace FiveGroup.Controllers
             return sc;
         }
 
-        
+        //傳數字取城市名
+        public DataTable GET(int city)
+        {
+            var sql = @"SELECT A.cityName
+            FROM city AS A ";
+            DataTable sc = QuerySql(sql);
+
+            return sc;
+        }
+
+        //傳城市名取鄉鎮區名
+        public DataTable GET(string cityName)
+        {
+            var sql = @"SELECT B.district_name
+            FROM district AS B 
+            LEFT JOIN city AS A ON A.c_id = B.c_id";
+            sql += " WHERE ";
+            sql += " B.district_name = " + cityName;
+            DataTable sc = QuerySql(sql);
+
+            return sc;
+        }
+
+
         public DataTable Get(string doc_name, string dep_name, string hos_name,string hos_eng_name, string date,string city_name,string district_name)
         {
             var sql = @"SELECT A.starttime,A.endtime,
