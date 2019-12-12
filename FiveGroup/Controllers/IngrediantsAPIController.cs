@@ -47,7 +47,7 @@ namespace FiveGroup.Controllers
                 sql += " WHERE ";
                 if (ing_name != null)
                 {
-                    sql += "A.ing_name like '%" + ing_name + "%'";
+                    sql += "A.ing_name  ='" + ing_name + "'";
                 }
             }
             DataTable sc = QuerySql(sql);

@@ -52,7 +52,7 @@ namespace FiveGroup.Controllers
         //傳數字取城市名
         public DataTable GET(int city)
         {
-            var sql = @"SELECT A.cityName
+            var sql = @"SELECT A.city_Name
             FROM city AS A ";
             DataTable sc = QuerySql(sql);
 
@@ -66,7 +66,7 @@ namespace FiveGroup.Controllers
             FROM district AS B 
             LEFT JOIN city AS A ON A.c_id = B.c_id";
             sql += " WHERE ";
-            sql += " B.district_name = " + cityName;
+            sql += " A.city_Name = '" + cityName + "'";
             DataTable sc = QuerySql(sql);
 
             return sc;
