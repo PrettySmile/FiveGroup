@@ -200,7 +200,14 @@
                         @Html.DisplayFor(modelItem => item.ing_restricted)
                     </td>
                     <td class="col-md-3 a">
+                        @if (item.ing_limitation!=null) {
                         @Html.DisplayFor(modelItem => item.ing_limitation)
+                        }
+                        else
+                        {
+                            <div>(無資料...)</div>
+                        }
+
                     </td>
                     <td class="col-md-1">
 

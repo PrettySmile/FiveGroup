@@ -60,16 +60,29 @@
             <div class="input-group">
                 <div class="input-group-prepend">
 
+
+
+
+
                     @*@if (modelItem => item.ing_limitation == null)
-                        {
-                            <span class="input-group-text tw justify-content-center">No Data</span>}
-                        else
-                        {
-                            <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>}*@
+            {
+                <span class="input-group-text tw justify-content-center">No Data</span>}
+            else
+            {
+                <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>}*@
 
                     <span class="input-group-text tw justify-content-center">@Html.DisplayNameFor(model => model.ing_limitation)</span>
                 </div>
-                <textarea class="form-control" name="ing_limitation" id="tx1" aria-label="With textarea">@Model.ing_limitation</textarea>
+
+                @if (Model.ing_limitation != null)
+                {
+                    <textarea class="form-control" name="ing_limitation" id="tx1" aria-label="With textarea">@Model.ing_limitation</textarea>
+                }
+                else
+                {
+                    <textarea class="form-control" name="ing_limitation" id="tx1" aria-label="With textarea" placeholder="(無資料...)"></textarea>
+                }
+                
             </div>
 
             <br />

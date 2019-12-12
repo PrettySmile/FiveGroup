@@ -54,6 +54,8 @@ namespace FiveGroup.Controllers
             SqlDataReader rd;
             Conn.Open();
 
+            Session["ADM"] = account;
+
             rd = Cmd.ExecuteReader();
             if (rd.Read())
             {
