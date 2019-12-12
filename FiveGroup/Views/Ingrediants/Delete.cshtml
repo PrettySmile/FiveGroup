@@ -53,9 +53,15 @@
             <div class="card-body">
                 <h3 class="card-title"><strong>@Html.DisplayNameFor(model => model.ing_limitation)</strong></h3>
                 <hr />
-
                 <h5 class="card-text text-center">
-                    @Html.DisplayFor(model => model.ing_limitation)
+                    @if (Model.ing_limitation != null)
+                    {
+                        @Html.DisplayFor(model => model.ing_limitation)
+                    }
+                    else
+                    {
+                        <span>(無資料...)</span>
+                    }
                 </h5>
             </div>
         </div>
@@ -68,10 +74,10 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            <p class="row">
-                <input type="submit" value="刪除" class="btn btn-danger btn-lg tf" style="font-size:20px" />
-                @Html.ActionLink("返回前頁", "Index", null, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
-            </p>
+        <p class="row">
+            <input type="submit" value="刪除" class="btn btn-danger btn-lg tf" style="font-size:20px" />
+            @Html.ActionLink("返回前頁", "Index", new { Page = Request.QueryString["page"] }, new { @class = "btn btn-primary btn-lg tf", @style = "font-size:20px" })
+        </p>
         }
     </div>
 

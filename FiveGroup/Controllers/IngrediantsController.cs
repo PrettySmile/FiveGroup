@@ -19,6 +19,7 @@ namespace FiveGroup.Controllers
         // GET: ingrediants
         public ActionResult Index(string search, int? page)
         {
+
             List<ingrediant> listmap = db.ingrediant.ToList();
 
             return View(db.ingrediant.Where(m => m.ing_category.StartsWith(search) || search ==null).ToList().ToPagedList(page ?? 1,10));
@@ -46,7 +47,7 @@ namespace FiveGroup.Controllers
             string id;
             id = New_Ing_id(c);
             ViewBag.Ing_id = id;
-
+            
 
             return View();
         }
@@ -157,5 +158,6 @@ namespace FiveGroup.Controllers
             }
             return Ing_id;
         }
+
     }
 }
