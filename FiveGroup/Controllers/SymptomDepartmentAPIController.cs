@@ -46,8 +46,9 @@ namespace FiveGroup.Controllers
         }
 
         //傳數字dep 取科別json
-        public DataTable GET(int dep=0)
+        public DataTable GET(string dep_id)
         {
+            dep_id = "";
             var sql = @"SELECT 
                    B.dep_name
             FROM department AS B ";
