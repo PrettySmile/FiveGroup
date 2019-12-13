@@ -45,7 +45,18 @@ namespace FiveGroup.Controllers
             return sc;
         }
 
-        
+        //傳數字dep 取科別json
+        public DataTable GET(int dep=0)
+        {
+            var sql = @"SELECT 
+                   B.dep_name
+            FROM department AS B ";
+            DataTable sc = QuerySql(sql);
+
+            return sc;
+        }
+
+
         public DataTable Get(string part_name, string sym_name)
         {
             var sql = @"SELECT 
