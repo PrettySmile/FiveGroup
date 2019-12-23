@@ -11,6 +11,7 @@ using FiveGroup.ViewModel;
 
 namespace FiveGroup.Controllers
 {
+    [LoginRule]
     public class HospitalsController : Controller
     {
         private Project2Entities db = new Project2Entities();

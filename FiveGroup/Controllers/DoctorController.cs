@@ -9,6 +9,7 @@ using PagedList.Mvc;
 
 namespace FiveGroup.Controllers
 {
+    [LoginRule]
     public class DoctorController : Controller
     {
         Project2Entities db = new Project2Entities();

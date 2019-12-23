@@ -13,6 +13,7 @@ using PagedList;
 
 namespace FiveGroup.Controllers
 {
+    [LoginRule]
     public class ScheduleController : Controller
     {
         private Project2Entities db = new Project2Entities();

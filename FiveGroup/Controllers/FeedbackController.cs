@@ -13,6 +13,7 @@ namespace FiveGroup.Controllers
     {
         Project2Entities db = new Project2Entities();
         // GET: Feedback
+        [LoginRule]
         public ActionResult Index(string f_class = "F0001")
         {
             string[] f_c = { "F0001", "F0002", "F0003", "F0004" };
@@ -66,6 +67,7 @@ namespace FiveGroup.Controllers
             return Content("<script>alert('感謝您的回報~!!');</script>");
         }
 
+        [LoginRule]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +79,8 @@ namespace FiveGroup.Controllers
 
             return View(feedback);
         }
+
+        [LoginRule]
         [HttpPost]
         public ActionResult Edit(int f_sn, string f_class, string f_content, DateTime f_date, Boolean f_checked)
         {
@@ -93,6 +97,7 @@ namespace FiveGroup.Controllers
             return RedirectToAction("Index", new { f_class = f_class });
         }
 
+        [LoginRule]
         public ActionResult Details(int? id, string f_class = "F0001")
         {
             if (id == null)
@@ -110,7 +115,7 @@ namespace FiveGroup.Controllers
             return View(fb);
         }
 
-
+        [LoginRule]
         public ActionResult Delete(int? id, string f_class)
         {
             var feedback = db.feedback.Where(m => m.f_sn == id).FirstOrDefault();
