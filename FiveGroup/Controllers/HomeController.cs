@@ -65,7 +65,7 @@ namespace FiveGroup.Controllers
                 return RedirectToAction("Index", "Announcement");
             }
             Conn.Close();
-            ViewBag.LoginErr = "帳號或密碼有誤!!";
+            TempData["LoginErr"] = "帳號或密碼有誤!!";
             return RedirectToAction("Index");
             //var admin = db.administrator.Where(d => d.admin_account == account && d.admin_pass == password).FirstOrDefault();
                     }

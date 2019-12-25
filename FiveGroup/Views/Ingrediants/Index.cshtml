@@ -15,59 +15,6 @@
 
 
 
-
-@*<div class="row container col-12">
-
-        <form class="form-row col-12" method="get">
-            <div class="input-group flex-wrap form-group col-7">
-                <div class="input-group-prepend" style="font-size:20px">
-                    <span class="input-group-text flex-fill justify-content-center" for="pId">部位</span>
-                </div>
-                <select class="custom-select" id="pId" name="pId" style="font-size:20px">
-                    <option value="" selected>全選</option>
-                    @foreach (var a in Model)
-                    {
-                        if (@ViewBag.pId == @a.part_id)
-                        {
-                            <option value="@a.part_id">@a.part_name</option>
-                        }
-                        else
-                        {
-                            <option value="@a.part_id">@a.part_name</option>
-                        }
-                    }
-                </select>
-            </div>
-
-
-            <div class="input-group flex-wrap form-group col-1">
-
-                <input type="submit" value="查詢" class="btn btn-primary " style="font-size:20px" />
-
-                <input id="page" type="hidden" name="page" value="1" />
-
-            </div>
-
-
-            <div class="input-group flex-wrap form-group col-1 offset-3">
-                @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
-            </div>
-
-        </form>
-    </div>*@
-
-
-
-@*@using (Html.BeginForm("Index", "Ingrediants", FormMethod.Get))
-    {
-        <input type="text" name="search"/>
-        <input class="btn btn-primary" type="submit" name="submit" />
-    }*@
-
-
-
-
-
 @using (Html.BeginForm("Index", "Ingrediants", FormMethod.Get))
 {
     <div class="row container col-12">
@@ -77,15 +24,16 @@
                 <div class="input-group-prepend" style="font-size:20px">
                     <span class="input-group-text flex-fill justify-content-center">依類別搜尋</span>
                 </div>
-                <input type="text" name="search" style="font-size:20px" placeholder=" 請輸入類別..."/>
+                <input type="text" name="search" style="font-size:20px" placeholder=" 請輸入類別..." />
 
                 <div style="padding-right:10px"></div>
-                
-                <input class="btn btn-primary" type="submit" name="submit" style="font-size:20px" value="查詢"/>
+
+                <input class="btn btn-primary" type="submit" style="font-size:20px" value="查詢" />
+                <input id="page" type="hidden" name="page" value="1" />
             </div>
 
 
-            <div class="input-group flex-wrap form-group col-1 offset-4">
+            <div class="input-group flex-wrap form-group col-2 offset-3">
               @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
             </div>
 
@@ -106,37 +54,10 @@
         </div>*@
 
         </form>
-        @*<p class=" text-right col-12">
-
-            </p>*@
-
-@*<div class="col-md-auto ml-auto">
-        @Html.ActionLink("新增資料", "Create", null, new { @class = "btn btn-info" })
-    </div>*@
-
-@*<p class="text-right col-12 tf">
-        @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
-    </p>*@
-
 </div>
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-@*<p class="text-right col-12 tf">
-        @Html.ActionLink("新增資訊", "Create", null, new { @class = "btn btn-success", @style = "font-size:20px" })
-  </p>*@
 
 <div class="container col-12 tf">
 
