@@ -1,7 +1,7 @@
 ﻿@model FiveGroup.Models.feedback
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "編輯問題回報";
 }
 
 <link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
@@ -58,21 +58,22 @@
 
             <br />
 
-            @*<div class="form-group hidden">
-            @Html.LabelFor(model => model.f_date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.f_date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.f_date, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-
             <div class="input-group flex-wrap form-group">
                 <div class="input-group-prepend tw">
                     <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.f_date)</span>
                 </div>
-                <input id="a_date" name="a_date" class="form-control" type="datetime-local" placeholder="輸入日期" value=@Model.f_date>
+                @Html.EditorFor(model => model.f_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.f_date, "", new { @class = "text-danger" })
             </div>
+        </div>
+
+
+            @*<div class="input-group flex-wrap form-group">
+                <div class="input-group-prepend tw">
+                    <span class="input-group-text flex-fill justify-content-center">@Html.DisplayNameFor(model => model.f_date)</span>
+                </div>
+                <input id="a_date" name="a_date" class="form-control" type="datetime-local" placeholder="輸入日期" value=@Model.f_date>
+            </div>*@
 
             @*<div class="form-group">
             @Html.LabelFor(model => model.f_checked, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -114,6 +115,5 @@
                 </div>
             </div>
         </div>
-    </div>
 
 }

@@ -313,7 +313,6 @@
     <Content Include="Views\SymptomDepartment\Index.cshtml" />
     <Content Include="Views\SymptomDepartment\Edit.cshtml" />
     <Content Include="Views\SymptomDepartment\Create.cshtml" />
-    <Content Include="Views\Feedback\OLDCreate.cshtml" />
     <Content Include="Views\Feedback\Details.cshtml" />
     <Content Include="Views\Feedback\Edit.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
