@@ -51,9 +51,16 @@
                 <span class="input-group-text flex-fill justify-content-center" for="s_display">@*@Html.DisplayNameFor(model => model.s_display)*@是否顯示</span>
             </div>
             <select class="custom-select" id="s_display" name="s_display">
-                <option selected>請選擇</option>
-                <option value="True">是</option>
-                <option value="False">否</option>
+                @if (Model.s_display == false)
+                {
+                    <option value="True">是</option>
+                    <option value="False" selected>否</option>
+                }
+                else
+                {
+                    <option value="True" selected>是</option>
+                    <option value="False">否</option>
+                }
             </select>
         </div>
 

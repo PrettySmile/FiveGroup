@@ -34,7 +34,7 @@ namespace FiveGroup.Controllers
         }
         public DataTable GET()
         {
-            var sql = @"D.hos_name,D.hos_eng_name,D.hos_phone,E.city_name,F.district_name,D.hos_address
+            var sql = @"SELECT D.hos_name,D.hos_eng_name,D.hos_phone,E.city_name,F.district_name,D.hos_address
             FROM schedule AS A
             LEFT JOIN doctor AS B ON B.doc_id=A.doc_id
             LEFT JOIN department AS C ON C.dep_id=A.dep_id
@@ -43,7 +43,7 @@ namespace FiveGroup.Controllers
             LEFT JOIN district AS F ON D.d_id = F.d_id";
             sql += " WHERE ";
             sql += " A.s_display = 'True' and B.doc_display = 'True' and D.hos_display = 'True' ";
-            sql += "GROUP BY D.hos_name,D.hos_eng_name,D.hos_phone,E.city_name,F.district_name,D.hos_address";
+            sql += " GROUP BY D.hos_name,D.hos_eng_name,D.hos_phone,E.city_name,F.district_name,D.hos_address";
             DataTable sc = QuerySql(sql);
 
             return sc;
@@ -58,7 +58,7 @@ namespace FiveGroup.Controllers
             LEFT JOIN department AS C ON C.dep_id=A.dep_id
             LEFT JOIN hospital AS D ON D.hos_id=A.hos_id
             LEFT JOIN city AS E ON D.c_id = E.c_id
-            LEFT JOIN district AS F ON D.d_id = F.d_id";
+            LEFT JOIN district AS F ON D.d_id = F.d_id"; 
             sql += " WHERE ";
             sql += " A.s_display = 'True' and B.doc_display = 'True' and D.hos_display = 'True' ";
             if (doc_name != null || dep_name != null || hos_name != null || hos_eng_name != null || date != null || city_name != null || district_name != null)

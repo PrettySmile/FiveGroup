@@ -196,6 +196,7 @@
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HospitalsAPIController.cs" />
     <Compile Include="Controllers\HospitalsController.cs" />
     <Compile Include="Controllers\IngrediantsAPIController.cs" />
     <Compile Include="Controllers\IngrediantsController.cs" />

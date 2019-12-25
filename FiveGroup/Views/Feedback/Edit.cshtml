@@ -56,11 +56,18 @@
              <div class="input-group-prepend tw">
                     <span class="input-group-text flex-fill justify-content-center" for="f_checked">@Html.DisplayNameFor(model => model.f_checked)</span>
              </div>
-                <select class="custom-select" id="f_checked" name="f_checked">
-                    <option selected>請選擇</option>
-                    <option value="True">是</option>
-                    <option value="False">否</option>
-                </select>
+             <select class="custom-select" id="f_checked" name="f_checked">
+                 @if (Model.f_checked == false)
+                 {
+                     <option value="True">是</option>
+                     <option value="False" selected>否</option>
+                 }
+                 else
+                 {
+                     <option value="True" selected>是</option>
+                     <option value="False">否</option>
+                 }
+             </select>
          </div>
 
 

@@ -2,6 +2,14 @@
 
 @{
     ViewBag.Title = "編輯醫院資料";
+    String show = "";
+    if (Model.hos_display == true)
+    {
+        show = "true";
+    }
+    else {
+        show = "false";
+    }
 }
 
 <link href="~/Content/Assemblestyle sheet 01.css" rel="stylesheet" />
@@ -59,9 +67,17 @@
                     <span class="input-group-text flex-fill justify-content-center" for="hos_display">@Html.DisplayNameFor(model => model.hos_display)</span>
                 </div>
                 <select class="custom-select" id="hos_display" name="hos_display">
-                    <option selected>請選擇</option>
-                    <option value="True">是</option>
-                    <option value="False">否</option>
+                    @if (Model.hos_display == false)
+                    {
+                        <option value="True">是</option>
+                        <option value="False" selected="selected">否</option>
+                    }
+                    else
+                    {
+                        <option value="True"  selected="selected">是</option>
+                        <option value="False">否</option>
+                    }
+
                 </select>
             </div>
 
@@ -190,6 +206,6 @@
     @Html.ActionLink("返回列表", "Index", new { @cityname = ViewBag.citynameID })
 </div>*@
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
