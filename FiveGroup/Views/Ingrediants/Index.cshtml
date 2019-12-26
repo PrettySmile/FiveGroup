@@ -24,10 +24,10 @@
                 <div class="input-group-prepend" style="font-size:20px">
                     <span class="input-group-text flex-fill justify-content-center">依類別搜尋</span>
                 </div>
-                <input type="text" name="search" style="font-size:20px" placeholder=" 請輸入類別..." />
+                @*<input type="text" name="search" style="font-size:20px" placeholder=" 請輸入類別..." />*@
 
                 <div style="padding-right:10px"></div>
-
+                @Html.DropDownList("search")
                 <input class="btn btn-primary" type="submit" style="font-size:20px" value="查詢" />
                 <input id="page" type="hidden" name="page" value="1" />
             </div>
